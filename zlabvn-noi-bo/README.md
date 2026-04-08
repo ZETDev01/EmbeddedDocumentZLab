@@ -1,28 +1,28 @@
-# Z Lab VN - Bo tai lieu noi bo
+# Z Lab VN - Bộ tài liệu nội bộ
 
-Thu muc nay chua bo tai lieu van hanh noi bo da duoc soan cho Z Lab VN.
+Thư mục này chứa bộ tài liệu vận hành nội bộ đã được soạn cho Z Lab VN.
 
-## Tep chinh
+## Tệp chính
 
-- `01-so-tay-van-hanh-noi-bo.md`: ban hop nhat quy dinh van hanh + quy dinh noi bo.
-- `01-so-tay-van-hanh-noi-bo.html`: ban trinh bay den trang, dang van ban de in va xuat PDF.
-- `01-so-tay-van-hanh-noi-bo.pdf`: ban PDF, neu da duoc xuat.
-- `02-quy-dinh-noi-bo-lab-va-luu-tru.md`: bo quy dinh rieng cho gio lam, Lab va luu tru Drive.
-- `02-quy-dinh-noi-bo-lab-va-luu-tru.html`: ban web-document co the mo online/noi bo va in PDF.
-- `02-quy-dinh-noi-bo-lab-va-luu-tru.pdf`: ban PDF tuong ung, neu da duoc xuat.
+- `01-so-tay-van-hanh-noi-bo.md`: bản hợp nhất quy định vận hành + quy định nội bộ.
+- `01-so-tay-van-hanh-noi-bo.html`: bản trình bày đến trang, dạng văn bản để in và xuất PDF.
+- `01-so-tay-van-hanh-noi-bo.pdf`: bản PDF, nếu đã được xuất.
+- `02-quy-dinh-noi-bo-lab-va-luu-tru.md`: bộ quy định riêng cho giờ làm, Lab và lưu trữ Drive.
+- `02-quy-dinh-noi-bo-lab-va-luu-tru.html`: bản web-document có thể mở online/nội bộ và in PDF.
+- `02-quy-dinh-noi-bo-lab-va-luu-tru.pdf`: bản PDF tương ứng, nếu đã được xuất.
 
-## Muc dich
+## Mục đích
 
-Bo tai lieu nay tap trung vao:
+Bộ tài liệu này tập trung vào:
 
-- quy che phoi hop va van hanh;
-- quy trinh thuc hien du an AI, Robotics, nhung;
-- quy dinh luu tru, dat ten file va dong bo du lieu;
-- ke hoach ap dung noi bo trong 30 ngay.
+- quy chế phối hợp và vận hành;
+- quy trình thực hiện dự án AI, Robotics, nhúng;
+- quy định lưu trữ, đặt tên file và đồng bộ dữ liệu;
+- kế hoạch áp dụng nội bộ trong 30 ngày.
 
-## Cach xuat PDF bang Chromium
+## Cách xuất PDF bằng Chromium
 
-Tu thu muc nay, co the xuat PDF bang lenh:
+Từ thư mục này, có thể xuất PDF bằng lệnh:
 
 ```bash
 chromium --headless --disable-gpu --print-to-pdf=01-so-tay-van-hanh-noi-bo.pdf 01-so-tay-van-hanh-noi-bo.html

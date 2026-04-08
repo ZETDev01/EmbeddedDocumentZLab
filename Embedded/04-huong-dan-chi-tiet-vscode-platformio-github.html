@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Z Lab VN - Hướng dẫn chi tiết: VSCode + PlatformIO + GitHub + Copilot AI</title>
+  <title>Z Lab VN - Hướng dẫn chi tiết: Cài đặt Visual Studio Code + PlatformIO + GitHub + GitHub Copilot</title>
   <link rel="stylesheet" href="./assets/embedded-doc.css" />
 </head>
 <body>
@@ -17,8 +17,8 @@
           <div class="cover-kicker">Sổ tay kỹ thuật nội bộ</div>
         </div>
 
-        <h1>Hướng dẫn chi tiết: Setup toàn bộ môi trường</h1>
-        <h2>Visual Studio Code + PlatformIO + GitHub + GitHub Copilot AI cho lập trình nhúng</h2>
+        <h1>Hướng dẫn chi tiết: Cài đặt toàn bộ môi trường lập trình</h1>
+        <h2>Visual Studio Code là công cụ chính, kết hợp PlatformIO, GitHub và GitHub Copilot AI cho lập trình nhúng ESP32 và STM32</h2>
 
         <div class="cover-box">
           <table>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
               <td><strong>Phiên bản</strong></td>
-              <td>1.0</td>
+              <td>2.0</td>
             </tr>
             <tr>
               <td><strong>Ngày cập nhật</strong></td>
@@ -46,19 +46,31 @@
         </div>
 
         <div class="cover-footer">
-          Tài liệu hướng dẫn từng bước chi tiết
+          Hướng dẫn chi tiết từng bước, không bỏ sót bất kỳ hành động nào
         </div>
       </div>
     </section>
 
     <section class="page">
       <div class="header">
-        <div class="title">Mục lục chi tiết hướng dẫn setup</div>
+        <div class="title">Mục lục hướng dẫn cài đặt</div>
         <div>Z Lab VN</div>
       </div>
 
       <div class="toc-title">Mục lục</div>
       <table class="toc">
+        <tr>
+          <td><strong>Phần mở đầu</strong></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>0. Phân tích ứng dụng và thống nhất sử dụng Visual Studio Code</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td><strong>Hướng dẫn cài đặt chi tiết</strong></td>
+          <td></td>
+        </tr>
         <tr>
           <td>1. Cài đặt Visual Studio Code - Từng bước chi tiết</td>
           <td>Phần I</td>
@@ -80,18 +92,164 @@
           <td>Phần V</td>
         </tr>
         <tr>
-          <td>6. Liên kết Git với máy tính của bạn</td>
+          <td>6. Liên kết Git với máy tính của bạn bằng SSH Key</td>
           <td>Phần VI</td>
         </tr>
         <tr>
-          <td>7. Cài đặt GitHub Copilot AI - Từng bước chi tiết</td>
+          <td>7. Cài đặt GitHub Copilot - Trợ lý AI lập trình</td>
           <td>Phần VII</td>
         </tr>
         <tr>
-          <td>8. Test và Checklist hoàn thành</td>
+          <td>8. Kiểm tra hoàn tất và chạy thử sample</td>
           <td>Phần VIII</td>
         </tr>
+        <tr>
+          <td>9. Tham khảo nhanh - Lệnh và phím tắt</td>
+          <td>Phần tham khảo</td>
+        </tr>
       </table>
+    </section>
+
+    <!-- PHẦN MỞ ĐẦU: PHÂN TÍCH ỨNG DỤNG -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần mở đầu - Phân tích ứng dụng</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần mở đầu - Phân tích Ứng dụng và Thống nhất Công cụ</div>
+
+      <h2>0. Phân tích Ứng dụng và Tại sao chọn Visual Studio Code?</h2>
+      
+      <h3>0.1. Mục tiêu ứng dụng lập trình nhúng tại Z Lab VN</h3>
+      <p class="lead">Chúng ta cần một môi trường lập trình phù hợp cho ba lĩnh vực chính:</p>
+      <ol>
+        <li><strong>Phát triển Firmware:</strong> Viết mã cho vi điều khiển ESP32 và STM32</li>
+        <li><strong>Quản lý Source Code:</strong> Lưu trữ, chia sẻ, cộng tác mã nguồn trên GitHub</li>
+        <li><strong>Tối ưu hóa Quy trình:</strong> Sử dụng AI (GitHub Copilot) để viết mã nhanh hơn, chính xác hơn</li>
+      </ol>
+
+      <h3>0.2. Các loại công cụ có thể sử dụng</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Công cụ / Nền tảng</th>
+            <th>Ưu điểm</th>
+            <th>Nhược điểm</th>
+            <th>Kết luận</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Visual Studio Code</strong> (VS Code)</td>
+            <td>• Miễn phí, nhẹ, nhanh<br/>• Hỗ trợ tất cả nền tảng (Windows, Mac, Linux)<br/>• Hệ sinh thái Extension lớn<br/>• Tích hợp tốt với Git / GitHub<br/>• Hỗ trợ GitHub Copilot tuyệt vời</td>
+            <td>• Cần cài thêm extension</td>
+            <td>✓ <strong>CHỌN</strong></td>
+          </tr>
+          <tr>
+            <td>Arduino IDE</td>
+            <td>• Đơn giản, thân thiện</td>
+            <td>• Hạn chế, quá cơ bản<br/>• Không tích hợp Git<br/>• Không có AI</td>
+            <td>✗ Loại bỏ</td>
+          </tr>
+          <tr>
+            <td>PlatformIO CLI (dòng lệnh)</td>
+            <td>• Mạnh mẽ, chuyên nghiệp</td>
+            <td>• Khó sử dụng, không có giao diện</td>
+            <td>← Dùng trong VS Code</td>
+          </tr>
+          <tr>
+            <td>STM32 Cube IDE</td>
+            <td>• Chính hãng, mạnh</td>
+            <td>• Nặng, chỉ cho STM32<br/>• Không tích hợp GitHub<br/>• Không có AI</td>
+            <td>✗ Giai đoạn sau</td>
+          </tr>
+          <tr>
+            <td>IAR Embedded Workbench</td>
+            <td>• Chuyên nghiệp, tối ưu hay</td>
+            <td>• Trả phí (rất đắt)<br/>• Khó học</td>
+            <td>✗ Chi phí cao</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>0.3. Tại sao Visual Studio Code?</h3>
+      <p><strong>Visual Studio Code</strong> được lựa chọn vì những lý do chiến lược:</p>
+      <ul>
+        <li><strong>1. Thống nhất công cụ:</strong> Một editor duy nhất cho tất cả các nhân viên, không cần học nhiều công cụ khác nhau</li>
+        <li><strong>2. Hỗ trợ 100% GitHub:</strong> Tích hợp Git, GitHub Authentication, GitHub Pages, và đặc biệt là GitHub Copilot AI</li>
+        <li><strong>3. PlatformIO tích hợp:</strong> VS Code + PlatformIO Extension = quản lý ESP32, STM32, và 700+ board khác</li>
+        <li><strong>4. Miễn phí hoàn toàn:</strong> Không có chi phí bản quyền, có thể dùng cho cả công ty</li>
+        <li><strong>5. Cộng đồng lớn:</strong> Có rất nhiều tài liệu, tutorial, extension hỗ trợ</li>
+        <li><strong>6. Hiện đại:</strong> Sẵn sàng cho tương lai, dễ mở rộng khi công ty phát triển</li>
+      </ul>
+
+      <h3>0.4. Các thành phần chính của stack lập trình</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Thành phần</th>
+            <th>Vai trò</th>
+            <th>Tại sao cần</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Visual Studio Code</strong></td>
+            <td>Editor chính (nhân công cụ)</td>
+            <td>Viết code, chỉnh sửa tập tin, quản lý dự án</td>
+          </tr>
+          <tr>
+            <td><strong>PlatformIO IDE</strong><br/>(Extension cho VS Code)</td>
+            <td>Biên dịch, nạp chương trình</td>
+            <td>Build firmware, Upload lên board, Monitor Serial</td>
+          </tr>
+          <tr>
+            <td><strong>Git</strong></td>
+            <td>Quản lý version</td>
+            <td>Lưu lịch sử code, quay lại phiên bản cũ, cộng tác team</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub</strong></td>
+            <td>Kho lưu trữ mã nguồn</td>
+            <td>Sao lưu code trên cloud, cộng tác, deploy tự động</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Copilot</strong></td>
+            <td>Trợ lý AI</td>
+            <td>Gợi ý code, hoàn thành tự động, giải thích code</td>
+          </tr>
+          <tr>
+            <td><strong>Driver USB</strong><br/>(CP210x, CH340, ST-LINK)</td>
+            <td>Giao tiếp USB</td>
+            <td>Máy tính nhận diện board khi kết nối cáp USB</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>0.5. Luồng công việc chuẩn (Workflow)</h3>
+      <p>Sau khi setup xong, nhân viên sẽ làm việc theo luồng này:</p>
+      <div class="codebox">1. Mở VS Code
+2. Mở thư mục Project (hoặc Clone từ GitHub)
+3. Viết/chỉnh sửa code với hỗ trợ GitHub Copilot
+4. Sử dụng PlatformIO: Build → Upload → Monitor
+5. Kiểm tra kết quả trên board (LED blink, Serial output)
+6. Commit code vào Git
+7. Push lên GitHub
+8. (Tuỳ chọn) Deploy tư liệu lên Vercel / GitHub Pages</div>
+
+      <h3>0.6. Lợi ích của cách tiếp cận này</h3>
+      <ul>
+        <li>✓ <strong>Hiệu suất cao:</strong> Nhân viên mới có thể bắt đầu ngay mà không cần setup phức tạp</li>
+        <li>✓ <strong>Nhất quán:</strong> Tất cả dùng cùng tool, cùng cách làm → dễ support</li>
+        <li>✓ <strong>Chuyên nghiệp:</strong> Github + Git + CI/CD = quy trình giống như các công ty lớn</li>
+        <li>✓ <strong>Tiết kiệm:</strong> Miễn phí, không phải mua bất kỳ license nào</li>
+        <li>✓ <strong>Luyện AI:</strong> Nhân viên được tiếp xúc với công nghệ hiện đại (AI coding)</li>
+      </ul>
+
+      <div class="summary-box">
+        <p><strong>Kết luận:</strong> Visual Studio Code + PlatformIO + GitHub + Copilot AI là <strong>stack tối ưu</strong> cho Z Lab VN giai đoạn hiện tại. Toàn bộ hướng dẫn dưới đây sẽ giúp bạn cài đặt chúng từ không có gì cho tới hoàn toàn sẵn sàng lập trình.</p>
+      </div>
     </section>
 
     <!-- PHẦN 1: CÀI ĐẶT VISUAL STUDIO CODE -->
