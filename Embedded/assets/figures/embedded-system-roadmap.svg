@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420">
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <text x="600" y="56" font-family="Arial, Helvetica, sans-serif" font-size="30" text-anchor="middle" fill="#111111">Embedded Learning Roadmap</text>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <rect x="60" y="130" width="220" height="120" rx="18" fill="#f7f7f7" stroke="#111111" stroke-width="2"/>
+    <text x="170" y="178" font-size="24" fill="#111111">Stage 1</text>
+    <text x="170" y="212" font-size="18" fill="#333333">Setup</text>
+
+    <rect x="340" y="130" width="220" height="120" rx="18" fill="#f7f7f7" stroke="#111111" stroke-width="2"/>
+    <text x="450" y="178" font-size="24" fill="#111111">Stage 2</text>
+    <text x="450" y="212" font-size="18" fill="#333333">ESP32 DevKit</text>
+
+    <rect x="620" y="130" width="220" height="120" rx="18" fill="#f7f7f7" stroke="#111111" stroke-width="2"/>
+    <text x="730" y="178" font-size="24" fill="#111111">Stage 3</text>
+    <text x="730" y="212" font-size="18" fill="#333333">STM32F103C8T6</text>
+
+    <rect x="900" y="130" width="220" height="120" rx="18" fill="#f7f7f7" stroke="#111111" stroke-width="2"/>
+    <text x="1010" y="178" font-size="24" fill="#111111">Stage 4</text>
+    <text x="1010" y="212" font-size="18" fill="#333333">AI Support</text>
+  </g>
+  <line x1="280" y1="190" x2="340" y2="190" stroke="#111111" stroke-width="3"/>
+  <polygon points="340,190 326,182 326,198" fill="#111111"/>
+  <line x1="560" y1="190" x2="620" y2="190" stroke="#111111" stroke-width="3"/>
+  <polygon points="620,190 606,182 606,198" fill="#111111"/>
+  <line x1="840" y1="190" x2="900" y2="190" stroke="#111111" stroke-width="3"/>
+  <polygon points="900,190 886,182 886,198" fill="#111111"/>
+  <text x="600" y="330" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">Goal: Build, upload, monitor, test, then extend</text>
+</svg>

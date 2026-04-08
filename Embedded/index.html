@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z Lab VN - Sổ tay lập trình nhúng nội bộ</title>
+  <link rel="stylesheet" href="./assets/embedded-doc.css" />
+</head>
+<body>
+  <div class="watermark">Z LAB VN | NỘI BỘ</div>
+  <main class="document">
+    <section class="cover">
+      <div class="cover-frame">
+        <div class="cover-top">
+          <div class="unit">Z Lab VN</div>
+          <div class="line"></div>
+          <div class="cover-kicker">Sổ tay kỹ thuật nội bộ</div>
+        </div>
+
+        <h1>Sổ tay lập trình nhúng nội bộ</h1>
+        <h2>Tài liệu tổng hợp về cài đặt môi trường, thực hành ESP32 DevKit và STM32F103C8T6, sử dụng AI hỗ trợ firmware và chuẩn bị triển khai tài liệu lên môi trường public</h2>
+
+        <div class="cover-box">
+          <table>
+            <tr>
+              <td><strong>Đơn vị</strong></td>
+              <td>Z Lab VN</td>
+            </tr>
+            <tr>
+              <td><strong>Phân loại</strong></td>
+              <td>NỘI BỘ</td>
+            </tr>
+            <tr>
+              <td><strong>Bộ tài liệu</strong></td>
+              <td>Embedded</td>
+            </tr>
+            <tr>
+              <td><strong>Phiên bản</strong></td>
+              <td>1.1</td>
+            </tr>
+            <tr>
+              <td><strong>Ngày cập nhật</strong></td>
+              <td>08/04/2026</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cover-footer">
+          Tài liệu sử dụng nội bộ cho Z Lab VN
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Mục lục tài liệu</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="toc-title">Mục lục</div>
+      <table class="toc">
+        <tr>
+          <td>0. <strong>HƯỚNG DẪN CHI TIẾT TỪNG BƯỚC:</strong> VSCode + PlatformIO + GitHub + Copilot</td>
+          <td><a href="./04-huong-dan-chi-tiet-vscode-platformio-github.html" style="color: #0066cc; text-decoration: underline;"><strong>Xem chi tiết →</strong></a></td>
+        </tr>
+        <tr>
+          <td>1. Mục đích, phạm vi và chuẩn đầu ra</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>2. Chuẩn phần cứng cơ bản và bộ dụng cụ</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>3. Cài đặt Visual Studio Code, PlatformIO, driver và kết nối board</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>4. Vị trí sample code, nội dung test và cách chạy chương trình</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>5. Thực hành ESP32 DevKit</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>6. Thực hành STM32F103C8T6</td>
+          <td>Phần IV</td>
+        </tr>
+        <tr>
+          <td>7. Prompt AI, checklist rà soát và cách dùng AI đúng phạm vi</td>
+          <td>Phần V</td>
+        </tr>
+        <tr>
+          <td>8. Chuẩn triển khai web, GitHub Pages, Vercel và custom domain</td>
+          <td>Phần VI</td>
+        </tr>
+        <tr>
+          <td>9. Checklist bàn giao cho nhân viên và tài liệu tham khảo</td>
+          <td>Phần cuối</td>
+        </tr>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Mục tiêu của sổ tay:</strong> Một nhân viên mới có thể đọc một tài liệu duy nhất, cài được môi trường, mở được sample, nạp được chương trình, biết nhờ AI hỗ trợ đúng cách và biết cách đóng gói tài liệu để triển khai lên web.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần mở đầu</div>
+        <div>Phân loại: NỘI BỘ</div>
+      </div>
+
+      <div class="section-band">Phần mở đầu</div>
+
+      <h2>1. Mục đích, phạm vi và chuẩn đầu ra</h2>
+      <p class="lead">Sổ tay này được dùng để đào tạo nội bộ các nhân sự bắt đầu làm việc với lập trình nhúng tại Z Lab VN, sử dụng Visual Studio Code làm môi trường chung cho giai đoạn nhập môn.</p>
+      <p>Phạm vi tài liệu tập trung vào hai nền tảng cơ bản là ESP32 DevKit và STM32F103C8T6. Mỗi người học cần nắm được phần cứng cơ bản, cấu trúc project, thao tác Build, Upload, Monitor, cách đọc log và cách kiểm tra lỗi trước khi chuyển sang các bài toán có độ phức tạp cao hơn.</p>
+      <p>Đầu ra tối thiểu sau khi hoàn thành tài liệu gồm: cài được môi trường, chạy được sample ESP32 và STM32, hiểu nơi lấy code test, biết sửa code mức cơ bản, biết viết prompt AI kỹ thuật và biết cách chuẩn bị site tĩnh để triển khai lên GitHub Pages hoặc Vercel.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/embedded-system-roadmap.svg" alt="Embedded learning roadmap" />
+        <p><strong>Hình 1.</strong> Lộ trình triển khai từ cài môi trường đến giai đoạn áp dụng AI và triển khai tài liệu.</p>
+      </div>
+
+      <div class="note">
+        Giai đoạn nhập môn sử dụng PlatformIO để tạo mặt bằng thao tác thống nhất. Khi đã ổn định, nhóm kỹ thuật có thể mở rộng sang ESP-IDF hoặc STM32Cube theo nhu cầu dự án.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần I - Phần cứng cơ bản</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần I - Phần cứng cơ bản</div>
+
+      <h2>2. Chuẩn phần cứng cơ bản và bộ dụng cụ</h2>
+      <p>Để giảm thời gian xử lý lỗi do sai khác phần cứng, tài liệu này quy định hai loại cơ bản dùng trong giai đoạn đầu là ESP32 DevKit và STM32F103C8T6. Việc chuẩn hóa board giúp người hướng dẫn dùng chung sample, chung sơ đồ nối dây và chung checklist kiểm tra.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nhóm</th>
+            <th>Board cơ bản</th>
+            <th>Mục tiêu sử dụng</th>
+            <th>Thiết bị đi kèm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ESP32</td>
+            <td>ESP32 DevKit</td>
+            <td>GPIO, Serial Monitor, Wi-Fi Scan</td>
+            <td>Cáp Micro USB data</td>
+          </tr>
+          <tr>
+            <td>STM32</td>
+            <td>STM32F103C8T6</td>
+            <td>GPIO, UART cơ bản</td>
+            <td>ST-LINK và USB-UART</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Bộ dụng cụ tối thiểu cho mỗi người:</strong> 1 breadboard nhỏ, 2 LED rời, 2 điện trở 220 ohm, bộ dây jumper, 1 đồng hồ đo cơ bản nếu có, 1 cáp USB data tốt.</p>
+        <p><strong>Lưu ý riêng cho STM32F103C8T6:</strong> Nạp code qua ST-LINK theo chân SWD. Nếu cần theo dõi log monitor trên máy tính, phải bổ sung một USB-UART riêng và nối đúng TX, RX, GND.</p>
+      </div>
+
+      <div class="figure-box">
+        <img src="./assets/figures/board-selection-matrix.svg" alt="Starter board selection" />
+        <p><strong>Hình 2.</strong> Bảng tóm tắt lý do chọn board cơ bản cho giai đoạn nhập môn.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Cài đặt môi trường</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Cài đặt môi trường</div>
+
+      <h2>3. Cài đặt Visual Studio Code, PlatformIO, driver và kết nối board</h2>
+      <p>Quy trình cài đặt được thực hiện theo một thứ tự cố định để tránh lỗi chéo giữa editor, extension, driver và cổng kết nối.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/setup-pipeline.svg" alt="Setup pipeline" />
+        <p><strong>Hình 3.</strong> Chuỗi thao tác chuẩn từ cài editor đến nạp chương trình đầu tiên.</p>
+      </div>
+
+      <h3>3.1. Các bước cài đặt</h3>
+      <ol>
+        <li>Cài Visual Studio Code từ trang chính thức của Microsoft.</li>
+        <li>Mở Visual Studio Code và cài extension PlatformIO IDE.</li>
+        <li>Với ESP32 DevKit, cắm cáp USB data và kiểm tra hệ điều hành đã nhận cổng serial chưa.</li>
+        <li>Với STM32F103C8T6, kết nối ST-LINK để nạp và kết nối USB-UART nếu cần monitor.</li>
+        <li>Mở đúng thư mục sample trong Embedded/samples thay vì mở toàn bộ workspace khi bắt đầu thực hành.</li>
+      </ol>
+
+      <h3>3.2. Driver cần chú ý</h3>
+      <ol>
+        <li>ESP32 DevKit thường dùng CP210x hoặc CH340 cho USB-UART. Cần kiểm tra đúng chip trên board để cài đúng driver.</li>
+        <li>STM32F103C8T6 không có mạch nạp tích hợp. Cần ST-LINK cho nạp code. Nếu monitor bằng UART, USB-UART phải được nối đúng TX sang RX, RX sang TX và GND chung.</li>
+      </ol>
+
+      <div class="note">
+        Trong mọi trường hợp, cần kiểm tra cáp data trước khi nghi ngờ phần mềm. Cáp chỉ có nguồn là nguyên nhân phổ biến nhất làm mất cổng kết nối hoặc monitor không có tín hiệu.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Sample code và cách chạy</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Sample code và cách chạy</div>
+
+      <h2>4. Vị trí sample code, nội dung test và cách chạy chương trình</h2>
+      <p>Các code test đã được đặt sẵn trong thư mục Embedded/samples. Người học không cần tự tạo project mới trong buổi đầu mà nên mở trực tiếp các sample có sẵn để rút ngắn thời gian thao tác.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Thư mục sample</th>
+            <th>Nội dung test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>samples/esp32-blink-pio</td>
+            <td>Nhấp nháy LED và in trạng thái lên serial</td>
+          </tr>
+          <tr>
+            <td>samples/esp32-wifi-scan-pio</td>
+            <td>Quét mạng Wi-Fi và in SSID, RSSI</td>
+          </tr>
+          <tr>
+            <td>samples/stm32-blink-pio</td>
+            <td>Nhấp nháy LED và in trạng thái qua UART</td>
+          </tr>
+          <tr>
+            <td>samples/stm32-uart-pio</td>
+            <td>In bộ đếm và thời gian hoạt động qua UART</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>4.1. Chạy bằng giao diện Visual Studio Code</h3>
+      <ol>
+        <li>Mở Visual Studio Code.</li>
+        <li>Chọn File -> Open Folder.</li>
+        <li>Chọn đúng một thư mục sample cụ thể.</li>
+        <li>Chờ PlatformIO chuẩn bị package lần đầu.</li>
+        <li>Bấm Build.</li>
+        <li>Nếu biên dịch thành công, bấm Upload.</li>
+        <li>Sau khi nạp xong, bấm Monitor.</li>
+      </ol>
+
+      <h3>4.2. Chạy bằng câu lệnh nếu đã có pio trong terminal</h3>
+      <div class="codebox">pio run
+pio run -t upload
+pio device monitor -b 115200</div>
+
+      <div class="note">
+        Nếu chỉ dùng Visual Studio Code và chưa có lệnh pio ở terminal, người học vẫn có thể thao tác hoàn chỉnh bằng các nút Build, Upload và Monitor trong PlatformIO.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Thực hành ESP32</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Thực hành ESP32</div>
+
+      <h2>5. Thực hành ESP32 DevKit</h2>
+      <p>ESP32 DevKit được dùng để kiểm tra chuỗi thao tác cơ bản gồm biên dịch, nạp, theo dõi monitor, LED output và Wi-Fi scan.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/esp32-lab-flow.svg" alt="ESP32 lab flow" />
+        <p><strong>Hình 4.</strong> Trình tự thực hành ESP32 từ Blink đến Wi-Fi Scan.</p>
+      </div>
+
+      <h3>5.1. Cấu hình project ESP32 Blink</h3>
+      <div class="codebox">[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+monitor_speed = 115200</div>
+
+      <h3>5.2. Đoạn mã test chính của ESP32 Blink</h3>
+      <div class="codebox">#include &lt;Arduino.h&gt;
+
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(500);
+}</div>
+
+      <h3>5.3. Kết quả mong đợi</h3>
+      <ol>
+        <li>LED trên board nhấp nháy theo chu kỳ.</li>
+        <li>Monitor hiển thị log trạng thái nếu mở sample đầy đủ trong repo.</li>
+        <li>Không có lỗi reset bất thường khi chỉ chạy blink.</li>
+      </ol>
+
+      <h3>5.4. Bài test Wi-Fi Scan</h3>
+      <p>Mở thư mục samples/esp32-wifi-scan-pio, Build, Upload và Monitor. Kết quả mong đợi là monitor hiển thị các dòng gồm thứ tự mạng, tên SSID, giá trị RSSI và trạng thái OPEN.</p>
+
+      <div class="summary-box">
+        <p><strong>Nơi lấy code:</strong> Toàn bộ sample ESP32 đã có sẵn trong Embedded/samples/esp32-blink-pio và Embedded/samples/esp32-wifi-scan-pio. Khi cần mở rộng bài học, cần sao chép từ các sample này trước khi sửa.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần IV - Thực hành STM32</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần IV - Thực hành STM32</div>
+
+      <h2>6. Thực hành STM32F103C8T6</h2>
+      <p>STM32F103C8T6 được dùng để luyện thao tác nạp qua ST-LINK, cấu hình board Blue Pill trong PlatformIO và theo dõi UART monitor qua USB-UART.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/stm32-lab-flow.svg" alt="STM32 lab flow" />
+        <p><strong>Hình 5.</strong> Trình tự thực hành STM32 từ Blink đến UART Counter.</p>
+      </div>
+
+      <h3>6.1. Cấu hình project STM32F103C8T6</h3>
+      <div class="codebox">[env:bluepill_f103c8]
+platform = ststm32
+board = bluepill_f103c8
+framework = arduino
+monitor_speed = 115200
+upload_protocol = stlink</div>
+
+      <h3>6.2. Nối dây tối thiểu</h3>
+      <ol>
+        <li>Nối ST-LINK theo chuẩn SWD để nạp code.</li>
+        <li>Nếu cần monitor, nối USB-UART với TX, RX và GND đúng chiều.</li>
+        <li>Dùng chung mass giữa board và USB-UART.</li>
+      </ol>
+
+      <h3>6.3. Đoạn mã test chính của STM32 UART Counter</h3>
+      <div class="codebox">#include &lt;Arduino.h&gt;
+
+unsigned long counter = 0;
+
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  counter++;
+  digitalWrite(LED_BUILTIN, counter % 2 == 0 ? HIGH : LOW);
+  Serial.println(counter);
+  delay(1000);
+}</div>
+
+      <h3>6.4. Kết quả mong đợi</h3>
+      <ol>
+        <li>Board nạp được chương trình qua ST-LINK.</li>
+        <li>LED thay đổi trạng thái theo chu kỳ.</li>
+        <li>Monitor trên USB-UART hiển thị bộ đếm tăng dần.</li>
+      </ol>
+
+      <div class="note">
+        Nếu nạp được nhưng monitor không có dữ liệu, ưu tiên kiểm tra lại sơ đồ TX, RX, GND của USB-UART thay vì sửa code ngay.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần V - AI hỗ trợ firmware</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần V - AI hỗ trợ firmware</div>
+
+      <h2>7. Prompt AI, checklist rà soát và cách dùng AI đúng phạm vi</h2>
+      <p>AI chỉ được dùng để tăng tốc soạn thảo module nhỏ, giải thích lỗi, gợi ý cấu trúc hoặc tạo checklist. AI không được xem là nơi quyết định cuối cùng về sơ đồ chân, điện áp, kết nối phần cứng hoặc logic an toàn.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/ai-firmware-loop.svg" alt="AI firmware loop" />
+        <p><strong>Hình 6.</strong> Vòng lặp chuẩn khi sử dụng AI cho firmware.</p>
+      </div>
+
+      <h3>7.1. Mẫu prompt chung</h3>
+      <div class="codebox">Board:
+MCU:
+Framework:
+IDE:
+Connected peripherals:
+GPIO mapping:
+Voltage levels:
+Goal:
+Constraints:
+Expected output:</div>
+
+      <h3>7.2. Ví dụ prompt cho ESP32 DevKit</h3>
+      <div class="codebox">Board: ESP32 DevKit
+MCU: ESP32
+Framework: Arduino on PlatformIO
+IDE: Visual Studio Code
+Connected peripherals: LED on GPIO2
+Goal: Blink LED every 500 ms and print log at 115200
+Constraints: Keep the code simple, no third-party libraries
+Expected output: Complete main.cpp</div>
+
+      <h3>7.3. Ví dụ prompt cho STM32F103C8T6</h3>
+      <div class="codebox">Board: STM32F103C8T6
+MCU: STM32F103C8T6
+Framework: Arduino on PlatformIO
+IDE: Visual Studio Code
+Connected peripherals: LED and USB-UART
+Goal: Print a counter every 1 second and toggle LED
+Constraints: Upload by ST-LINK, monitor at 115200
+Expected output: Complete main.cpp and short wiring note</div>
+
+      <h3>7.4. Prompt dùng khi debug</h3>
+      <div class="codebox">Tôi đang dùng board STM32F103C8T6 với PlatformIO.
+Đây là file platformio.ini:
+...
+Đây là log upload hoặc monitor:
+...
+Hãy chỉ ra 3 nguyên nhân có khả năng cao nhất, thứ tự kiểm tra và bản sửa tối thiểu.</div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần VI - Triển khai web</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần VI - Triển khai web</div>
+
+      <h2>8. Chuẩn triển khai web, GitHub Pages, Vercel và custom domain</h2>
+      <p>Bộ tài liệu này là static site. Không cần backend. Vì vậy có thể triển khai trên GitHub Pages hoặc Vercel sau khi có repo hoặc project đích.</p>
+
+      <h3>8.1. Cấu trúc triển khai</h3>
+      <ol>
+        <li>Trang chính public nên trỏ tới file gốc index.html của repo.</li>
+        <li>File gốc index.html có thể chuyển hướng vào Embedded/index.html hoặc hiển thị trực tiếp tài liệu.</li>
+        <li>Cần có file .nojekyll nếu dùng GitHub Pages để tránh Jekyll xử lý ngoài ý muốn.</li>
+        <li>Có thể dùng vercel.json để cấu hình cách phục vụ static site khi đưa lên Vercel.</li>
+      </ol>
+
+      <h3>8.2. Câu lệnh ví dụ khi đẩy lên GitHub</h3>
+      <div class="codebox">git init
+git add .
+git commit -m "Add embedded internal handbook"
+git branch -M main
+git remote add origin &lt;repo-url&gt;
+git push -u origin main</div>
+
+      <h3>8.3. Các bước cấu hình GitHub Pages</h3>
+      <ol>
+        <li>Tạo repo GitHub mới hoặc dùng repo đã có.</li>
+        <li>Đẩy toàn bộ source lên nhánh main.</li>
+        <li>Trong Settings của repo, mở mục Pages.</li>
+        <li>Chọn nguồn publish là branch main và thư mục root hoặc docs theo cách tổ chức repo.</li>
+        <li>Sau khi GitHub Pages sinh URL, có thể cấu hình custom domain nếu cần.</li>
+      </ol>
+
+      <h3>8.4. Câu lệnh ví dụ khi dùng Vercel</h3>
+      <div class="codebox">vercel
+vercel --prod</div>
+
+      <h3>8.5. Các bước cấu hình Vercel</h3>
+      <ol>
+        <li>Tạo project mới trên Vercel từ repo GitHub hoặc upload source.</li>
+        <li>Chọn thư mục gốc của project static.</li>
+        <li>Kiểm tra trang index và đường dẫn tới Embedded/index.html.</li>
+        <li>Trong mục Domains, thêm miền riêng nếu cần và cấu hình DNS theo hướng dẫn của Vercel.</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>Trạng thái hiện tại của workspace:</strong> Chưa có git repository, chưa có GitHub remote, chưa có Vercel project và chưa có công cụ gh hoặc vercel trong máy. Vì vậy tài liệu đã được chuẩn bị theo hướng deploy tĩnh, nhưng link public chỉ có thể tạo sau khi có đích triển khai cụ thể.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần cuối - Bàn giao và tham khảo</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần cuối - Bàn giao và tham khảo</div>
+
+      <h2>9. Checklist bàn giao cho nhân viên và tài liệu tham khảo</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Hạng mục</th>
+            <th>Trạng thái cần đạt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Máy phát triển</td>
+            <td>Cài xong Visual Studio Code và PlatformIO IDE</td>
+          </tr>
+          <tr>
+            <td>ESP32 DevKit</td>
+            <td>Build, upload, monitor được sample Blink và Wi-Fi Scan</td>
+          </tr>
+          <tr>
+            <td>STM32F103C8T6</td>
+            <td>Build, upload bằng ST-LINK và monitor bằng USB-UART</td>
+          </tr>
+          <tr>
+            <td>AI workflow</td>
+            <td>Viết được prompt có đủ board, framework, GPIO, goal và constraints</td>
+          </tr>
+          <tr>
+            <td>Triển khai tài liệu</td>
+            <td>Biết cấu trúc static site và các bước deploy lên GitHub Pages hoặc Vercel</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>9.1. Nguồn tham khảo chính thức</h3>
+      <p>Visual Studio Code: https://code.visualstudio.com/</p>
+      <p>PlatformIO: https://docs.platformio.org/en/latest/</p>
+      <p>ESP-IDF Get Started: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/</p>
+      <p>GitHub Pages: https://docs.github.com/en/pages</p>
+      <p>GitHub Pages custom domain: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site</p>
+      <p>Vercel docs: https://vercel.com/docs</p>
+      <p>Vercel custom domains: https://vercel.com/docs/domains</p>
+
+      <div class="note">
+        Khi sử dụng sổ tay này trong buổi đào tạo, nên đi đúng thứ tự: cài môi trường, chạy sample ESP32, chạy sample STM32, sau đó mới chuyển sang nội dung AI và triển khai web.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

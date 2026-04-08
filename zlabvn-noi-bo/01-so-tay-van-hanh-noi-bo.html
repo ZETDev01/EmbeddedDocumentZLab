@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z Lab VN - Sổ tay vận hành và quy định nội bộ</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 15mm 18mm 15mm;
+    }
+
+    :root {
+      --ink: #101010;
+      --muted: #4d4d4d;
+      --line: #7a7a7a;
+      --line-soft: #b8b8b8;
+      --light: #f1f1f1;
+      --lighter: #f8f8f8;
+      --paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: var(--ink);
+      font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+      font-size: 15.2px;
+      line-height: 1.68;
+    }
+
+    body {
+      counter-reset: page;
+    }
+
+    .watermark {
+      position: fixed;
+      top: 46%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 84px;
+      font-weight: 700;
+      letter-spacing: 10px;
+      color: rgba(0, 0, 0, 0.04);
+      z-index: 0;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .document {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 18px 0 44px;
+    }
+
+    .cover {
+      min-height: 1084px;
+      padding: 22px;
+      border: 1.8px solid #000000;
+      page-break-after: always;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .cover-frame {
+      min-height: 1036px;
+      border: 1px solid #000000;
+      padding: 34px 42px 34px;
+      position: relative;
+    }
+
+    .cover-top {
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .cover-top .unit {
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cover-top .line {
+      width: 132px;
+      height: 1px;
+      background: #000000;
+      margin: 18px auto 26px;
+    }
+
+    .cover-kicker {
+      text-align: center;
+      font-size: 11.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cover h1 {
+      margin: 124px 0 16px;
+      text-align: center;
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 36px;
+      line-height: 1.28;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .cover h2 {
+      margin: 0;
+      text-align: center;
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: #222222;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cover-box {
+      width: 74%;
+      margin: 104px auto 0;
+      border: 1px solid #000000;
+      border-collapse: collapse;
+      background: #fcfcfc;
+    }
+
+    .cover-box table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cover-box td {
+      border: 1px solid #000000;
+      padding: 12px 15px;
+      font-size: 14.5px;
+    }
+
+    .cover-footer {
+      position: absolute;
+      left: 42px;
+      right: 42px;
+      bottom: 34px;
+      text-align: center;
+      font-size: 12.8px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .page {
+      position: relative;
+      border: 1px solid #000000;
+      padding: 22px 28px 44px;
+      margin-top: 18px;
+      page-break-after: always;
+      background: var(--paper);
+      counter-increment: page;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .page::after {
+      content: "Trang " counter(page);
+      position: absolute;
+      right: 28px;
+      bottom: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .header .title {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 13px;
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 24px;
+      line-height: 1.34;
+      letter-spacing: 0.01em;
+    }
+
+    h3 {
+      margin: 20px 0 9px;
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.42;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.42;
+    }
+
+    p {
+      margin: 0 0 11px;
+      text-align: justify;
+      text-indent: 1.8em;
+    }
+
+    ul, ol {
+      margin: 8px 0 14px 24px;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .lead {
+      margin-bottom: 16px;
+      font-size: 15.8px;
+      line-height: 1.72;
+      text-indent: 0;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 18px;
+      font-size: 14.2px;
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    .table th,
+    .table td {
+      border: 1px solid #000000;
+      padding: 10px 11px;
+      vertical-align: top;
+    }
+
+    .table th {
+      background: var(--light);
+      text-align: left;
+      font-weight: 700;
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+    }
+
+    .codebox {
+      border: 1px solid #000000;
+      background: var(--lighter);
+      padding: 13px 15px;
+      margin: 14px 0 18px;
+      font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+      font-size: 12.8px;
+      line-height: 1.58;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    .note {
+      border-left: 3px solid #000000;
+      padding: 2px 0 2px 14px;
+      margin: 14px 0;
+      color: var(--muted);
+      font-size: 14.3px;
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    .toc-title {
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .toc {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 14.4px;
+    }
+
+    .toc td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line-soft);
+      vertical-align: top;
+    }
+
+    .toc td:last-child {
+      width: 90px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .section-band {
+      margin: 0 0 18px;
+      padding: 8px 12px;
+      border: 1px solid #000000;
+      background: var(--lighter);
+      font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .summary-box {
+      border: 1px solid #000000;
+      padding: 12px 14px;
+      margin: 14px 0 18px;
+      background: #fcfcfc;
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+
+    .summary-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .summary-box p,
+    .note p {
+      text-indent: 0;
+    }
+
+    h2, h3, h4 {
+      break-after: avoid-page;
+      page-break-after: avoid;
+    }
+
+    ul, ol {
+      break-inside: avoid-page;
+      page-break-inside: avoid;
+    }
+  </style>
+</head>
+<body>
+  <div class="watermark">NỘI BỘ</div>
+  <main class="document">
+    <section class="cover">
+      <div class="cover-frame">
+        <div class="cover-top">
+          <div class="unit">Z Lab VN</div>
+          <div class="line"></div>
+          <div class="cover-kicker">Tài liệu vận hành nội bộ</div>
+        </div>
+
+        <h1>Sổ tay vận hành và quy định nội bộ</h1>
+        <h2>Tài liệu thống nhất về thời gian làm việc, nguyên tắc phối hợp, tuân thủ tại phòng Lab và chuẩn lưu trữ nội bộ</h2>
+
+        <div class="cover-box">
+          <table>
+            <tr>
+              <td><strong>Đơn vị</strong></td>
+              <td>Z Lab VN</td>
+            </tr>
+            <tr>
+              <td><strong>Phân loại</strong></td>
+              <td>NỘI BỘ</td>
+            </tr>
+            <tr>
+              <td><strong>Phiên bản</strong></td>
+              <td>1.1</td>
+            </tr>
+            <tr>
+              <td><strong>Hiệu lực đề xuất</strong></td>
+              <td>06/04/2026</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cover-footer">
+          Tài liệu sử dụng nội bộ cho Z Lab VN
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Mục lục tài liệu</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="toc-title">Mục lục</div>
+      <table class="toc">
+        <tr>
+          <td>1. Mục đích và phạm vi áp dụng</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>2. Thời gian làm việc</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>3. Nguyên tắc vận hành chung</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>4. Quy định phối hợp trong công việc</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>5. Quy định tuân thủ tại phòng Lab</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>6. Quy định theo nhóm thiết bị</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>7. Quy định lưu trữ nội bộ trên Drive</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>8. Quy định đặt tên thư mục dự án</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>9. Yêu cầu bắt buộc đối với feature.txt</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>10. Quy định lưu video và đưa file final lên Drive</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>11. Tổ chức thực hiện</td>
+          <td>Phần cuối</td>
+        </tr>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Ghi chú:</strong> Đây là bản sổ tay hợp nhất giữa quy định vận hành và quy định nội bộ. Tài liệu được trình bày theo dạng văn bản để thuận tiện cho việc in, ký duyệt, lưu hành nội bộ và cập nhật theo phiên bản.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Z Lab VN - Sổ tay vận hành và quy định nội bộ</div>
+        <div>Phân loại: NỘI BỘ</div>
+      </div>
+
+      <div class="section-band">Phần mở đầu</div>
+
+      <h2>1. Mục đích và phạm vi áp dụng</h2>
+      <p class="lead">Tài liệu này là văn bản vận hành nội bộ thống nhất của Z Lab VN, được sử dụng để làm rõ cách làm việc, cách phối hợp và cách lưu trữ đầu ra trong quá trình thực hiện các công việc kỹ thuật tại đơn vị.</p>
+      <p>Mục đích của tài liệu là thống nhất thời gian làm việc, nguyên tắc phối hợp, quy định tuân thủ trong phòng Lab và quy tắc lưu trữ nội bộ trên Drive. Tài liệu được xây dựng theo nhu cầu vận hành của một phòng Lab quy mô nhỏ, ưu tiên tính rõ ràng, gọn, dễ áp dụng và dễ duy trì.</p>
+      <p>Phạm vi áp dụng gồm người phụ trách điều hành, nhân sự kỹ thuật, cộng tác viên, thực tập sinh và các thành viên tham gia dự án nội bộ hoặc dự án khách hàng tại Z Lab VN.</p>
+
+      <h2>2. Thời gian làm việc</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nội dung</th>
+            <th>Thời gian</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Buổi sáng</td>
+            <td>08:00 - 12:00</td>
+          </tr>
+          <tr>
+            <td>Buổi chiều</td>
+            <td>13:30 - 17:30</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Thành viên cần có mặt và sẵn sàng làm việc đúng giờ bắt đầu. Khi đi muộn, nghỉ, thay đổi lịch hoặc ra ngoài xử lý việc cá nhân, cần báo người phụ trách trực tiếp. Trường hợp chạy test ngoài giờ, in 3D kéo dài hoặc xử lý công việc gấp phải có người chịu trách nhiệm rõ ràng.</p>
+
+      <h2>3. Nguyên tắc vận hành chung</h2>
+      <ol>
+        <li>Mọi công việc cần có người phụ trách, đầu ra và thời điểm hoàn thành tương đối rõ ràng.</li>
+        <li>Công việc chỉ được xem là hoàn thành khi đã có đầu ra thực tế, lưu đúng nơi và có thể bàn giao lại.</li>
+        <li>Mọi thay đổi quan trọng trong tài liệu, mã nguồn, cấu hình hoặc thiết kế cần có dấu vết để tra cứu.</li>
+        <li>Những điểm có rủi ro về tiến độ, kỹ thuật, vật tư hoặc vận hành cần được báo sớm.</li>
+        <li>Phòng Lab làm việc theo hướng gọn, rõ và có trách nhiệm; không cần quy trình phức tạp nhưng phải thống nhất.</li>
+      </ol>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần I - Vận hành và phối hợp</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần I - Vận hành và phối hợp</div>
+
+      <h2>4. Quy định phối hợp trong công việc</h2>
+      <h3>4.1. Yêu cầu tối thiểu đối với một đầu việc</h3>
+      <p>Mỗi đầu việc nên có tối thiểu tên việc, người phụ trách, thời hạn dự kiến, đầu ra mong đợi và trạng thái hiện tại. Cách làm này giúp phòng Lab tuy nhỏ nhưng vẫn kiểm soát được tiến độ và tránh phụ thuộc vào trao đổi miệng.</p>
+
+      <h3>4.2. Trạng thái công việc dùng chung</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Trạng thái</th>
+            <th>Ý nghĩa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TODO</td>
+            <td>Chưa bắt đầu</td>
+          </tr>
+          <tr>
+            <td>DOING</td>
+            <td>Đang thực hiện</td>
+          </tr>
+          <tr>
+            <td>BLOCKED</td>
+            <td>Đang vướng và cần hỗ trợ hoặc chờ điều kiện</td>
+          </tr>
+          <tr>
+            <td>DONE</td>
+            <td>Đã hoàn thành và có đầu ra rõ ràng</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>4.3. Nguyên tắc bàn giao nội bộ</h3>
+      <ul>
+        <li>Khi bàn giao cần chỉ rõ file nào là bản đang dùng chính.</li>
+        <li>Nếu còn tồn đọng, phải ghi rõ phần chưa xong hoặc rủi ro còn lại.</li>
+        <li>Không bàn giao chỉ bằng trí nhớ hoặc qua trao đổi miệng đơn thuần.</li>
+      </ul>
+
+      <div class="note">
+        Mục tiêu của phần này không phải để tăng giấy tờ, mà để bất kỳ người nào tiếp nhận công việc cũng có thể hiểu được trạng thái hiện tại của đầu việc.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Tuân thủ tại phòng Lab</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Tuân thủ tại phòng Lab</div>
+
+      <h2>5. Quy định tuân thủ tại phòng Lab</h2>
+      <p class="lead">Đối với Z Lab VN, việc tuân thủ tại phòng Lab được hiểu theo hướng thực tế và phù hợp quy mô nhỏ: làm việc an toàn, giữ thiết bị ổn định, không gây lãng phí thời gian và bảo đảm người khác có thể tiếp tục công việc trong không gian chung.</p>
+
+      <h3>5.1. Mục tiêu tuân thủ</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Mục tiêu</th>
+            <th>Ý nghĩa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>An toàn cho con người</td>
+            <td>Giảm nguy cơ bỏng, điện, va chạm, hít khói hoặc thao tác sai</td>
+          </tr>
+          <tr>
+            <td>Bảo vệ thiết bị và vật tư</td>
+            <td>Giảm hỏng hóc do sử dụng sai hoặc để thiết bị ở trạng thái không kiểm soát</td>
+          </tr>
+          <tr>
+            <td>Giảm thất thoát thời gian</td>
+            <td>Tránh làm lại do thiếu ghi nhận, thiếu vệ sinh hoặc bỏ sót tình trạng máy</td>
+          </tr>
+          <tr>
+            <td>Giữ không gian rõ ràng</td>
+            <td>Giúp người khác dễ tiếp nhận, dễ tìm dụng cụ và dễ tiếp tục công việc</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5.2. Nguyên tắc chung tại phòng Lab</h3>
+      <ol>
+        <li>Chỉ sử dụng thiết bị khi đã biết cách dùng hoặc đã được hướng dẫn.</li>
+        <li>Không để khu vực làm việc bừa bộn, ẩm, vướng dây điện hoặc lẫn vật nóng, vật sắc nhọn.</li>
+        <li>Không ăn uống tại khu vực thiết bị, bàn hàn, board test hoặc khu vực đang chạy thử.</li>
+        <li>Sau khi sử dụng xong phải thu gọn dụng cụ, vệ sinh vị trí làm việc và trả đúng chỗ.</li>
+        <li>Nếu có khói bất thường, mùi khét, chập điện, bỏng, hỏng máy hoặc lỗi an toàn, phải báo ngay.</li>
+      </ol>
+
+      <h3>5.3. Tác phong khi làm việc trong Lab</h3>
+      <p>Thành viên nên ưu tiên mang giày kín mũi khi thao tác với thiết bị hoặc khu vực kỹ thuật. Tóc dài cần buộc gọn; hạn chế tay áo rộng hoặc vật đeo dễ vướng khi làm việc với máy. Với thao tác có nhiệt, khói hoặc nguy cơ bắn văng, cần dùng bảo hộ phù hợp theo tình huống. Không nên đeo tai nghe khi đang trực tiếp vận hành thiết bị cần quan sát liên tục.</p>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Tuân thủ tại phòng Lab</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Tuân thủ tại phòng Lab</div>
+
+      <h2>6. Quy định theo nhóm thiết bị</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nhóm thiết bị</th>
+            <th>Quy định tuân thủ chính</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Máy in 3D</td>
+            <td>Kiểm tra tình trạng máy trước khi chạy; không chạm đầu in hoặc bàn nhiệt khi còn nóng; không để máy chạy mà không có người chịu trách nhiệm; sau khi in xong phải dọn vật liệu thừa và vệ sinh khu vực máy.</td>
+          </tr>
+          <tr>
+            <td>Trạm hàn, mỏ hàn, khò nhiệt</td>
+            <td>Chỉ thao tác ở khu vực phù hợp; khi không thao tác mỏ hàn phải đặt đúng đế giữ; không rời vị trí quá lâu khi thiết bị còn bật; sau khi dùng xong phải tắt, để nguội và thu gọn dây.</td>
+          </tr>
+          <tr>
+            <td>Board test, nguồn cấp và thiết bị điện tử</td>
+            <td>Kiểm tra điện áp, cực tính và giới hạn dòng trước khi cấp nguồn; không cấp điện khi dây nối chưa xác minh; nên ghi nhãn tên dự án hoặc người phụ trách đối với board đang test kéo dài.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>6.1. Những việc không nên thực hiện trong Lab</h3>
+      <ul>
+        <li>Tự ý tháo sửa thiết bị chung khi chưa được giao phụ trách.</li>
+        <li>Dùng vật tư, nguồn cấp hoặc vật liệu không rõ thông số.</li>
+        <li>Để mỏ hàn, máy in 3D hoặc nguồn cấp hoạt động mà không có người chịu trách nhiệm.</li>
+        <li>Đặt đồ uống, thức ăn hoặc vật dễ cháy gần khu vực kỹ thuật.</li>
+        <li>Mang tài sản, thiết bị hoặc vật tư của Lab ra ngoài mà chưa được đồng ý.</li>
+      </ul>
+
+      <div class="note">
+        Với quy mô hiện tại của Z Lab VN, điều quan trọng nhất là ý thức tuân thủ và trách nhiệm cá nhân khi sử dụng không gian chung, thiết bị chung và vật tư chung.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Lưu trữ nội bộ</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Lưu trữ nội bộ</div>
+
+      <h2>7. Quy định lưu trữ nội bộ trên Drive</h2>
+      <p class="lead">Mục tiêu của phần này là tạo một cấu trúc lưu trữ đủ rõ để khi tìm lại file final hoặc tiếp nhận dự án, người khác có thể hiểu nhanh dự án thuộc nền tảng nào, trạng thái ra sao và đâu là bản dùng chính thức.</p>
+
+      <h3>7.1. Nguyên tắc lưu trữ</h3>
+      <ul>
+        <li>Chỉ lưu bản final hoặc bản đã được chốt sử dụng vào khu vực Drive chuẩn.</li>
+        <li>Bản lưu trên Drive phải là bản có thể tìm lại, hiểu lại và bàn giao lại được.</li>
+        <li>Không dùng tên file mơ hồ như <code>final</code>, <code>final new</code>, <code>ban moi</code>, <code>ok</code>, <code>done</code>.</li>
+        <li>Mọi file final phải lưu đúng thư mục và theo đúng quy tắc đặt tên.</li>
+      </ul>
+
+      <h3>7.2. Thư mục gốc chính thức</h3>
+      <div class="codebox">Z Lab Workspace/
+|- STM32 Project/
+|- ESP32 Project/
+|- VXL Project/
+\- Tiktok Video/</div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Thư mục</th>
+            <th>Mục đích</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>STM32 Project</td>
+            <td>Lưu dự án sử dụng nền tảng STM32</td>
+          </tr>
+          <tr>
+            <td>ESP32 Project</td>
+            <td>Lưu dự án sử dụng nền tảng ESP32</td>
+          </tr>
+          <tr>
+            <td>VXL Project</td>
+            <td>Lưu dự án thị giác máy tính hoặc các dự án xử lý liên quan</td>
+          </tr>
+          <tr>
+            <td>Tiktok Video</td>
+            <td>Lưu video hoàn thiện phục vụ truyền thông</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Lưu trữ nội bộ</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Lưu trữ nội bộ</div>
+
+      <h2>8. Quy định đặt tên thư mục dự án</h2>
+      <p>Tên thư mục dự án được đặt theo mẫu <strong>&lt;TenViDieuKhienHoacChip&gt;_&lt;TenProjectKhongDau&gt;</strong>. Tên phải thể hiện rõ vi điều khiển, module hoặc chip chính; phần tên project phải không dấu, ngắn gọn và dễ đọc. Không dùng các từ dư thừa như <code>new</code>, <code>old</code>, <code>test1</code>, <code>final</code>.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Ví dụ phù hợp</th>
+            <th>Ví dụ không nên dùng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              ESP32Wroom_Smartdoor_RFID_Keypad<br />
+              STM32F407_Autodoor_Controller<br />
+              ESP32S3_AI_Camera_Counter
+            </td>
+            <td>
+              smartdoor<br />
+              project moi<br />
+              esp32 final
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>8.1. Cấu trúc thư mục bên trong dự án</h3>
+      <div class="codebox">&lt;TenViDieuKhienHoacChip&gt;_&lt;TenProjectKhongDau&gt;/
+|- feature.txt
+|- 00_admin/
+|- 01_spec/
+|- 02_hardware/
+|- 03_firmware/
+|- 04_software/
+|- 05_test/
+|- 06_media/
+\- 99_release/</div>
+
+      <p>Dự án chỉ có firmware vẫn cần giữ tối thiểu các phần <code>feature.txt</code>, <code>01_spec</code>, <code>03_firmware</code>, <code>05_test</code> và <code>99_release</code>. Nếu dự án có AI hoặc dữ liệu riêng, có thể bổ sung thêm thư mục phù hợp như <code>07_model_data</code>.</p>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Lưu trữ nội bộ</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Lưu trữ nội bộ</div>
+
+      <h2>9. Yêu cầu bắt buộc đối với <code>feature.txt</code></h2>
+      <p>Mỗi thư mục dự án phải có file <code>feature.txt</code>. Đây là file mô tả ngắn nhưng đủ để người khác nhìn vào là hiểu sản phẩm đang làm gì, dùng nền tảng nào và tính năng chính là gì.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nội dung cần có</th>
+            <th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tên dự án</td>
+            <td>Ghi đúng tên sản phẩm hoặc tên mô tả ngắn gọn</td>
+          </tr>
+          <tr>
+            <td>Vi điều khiển / module / chip chính</td>
+            <td>Ghi rõ nền tảng chính đang dùng</td>
+          </tr>
+          <tr>
+            <td>Mô tả ngắn và tính năng đầy đủ</td>
+            <td>Giúp người tiếp nhận hiểu ngay phạm vi sản phẩm</td>
+          </tr>
+          <tr>
+            <td>Giao tiếp, nguồn cấp, phiên bản, người phụ trách, ngày cập nhật</td>
+            <td>Giúp tra cứu và kiểm soát bản đang dùng</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Lưu trữ nội bộ</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Lưu trữ nội bộ</div>
+
+      <h3>9.1. Mẫu nội dung tham khảo</h3>
+      <div class="codebox">Project Name: Smartdoor RFID Keypad
+Main MCU/Module: ESP32-WROOM
+Category: Access Control
+Product Summary: Bo dieu khien cua thong minh dung RFID va keypad.
+
+Main Features:
+- Mo cua bang the RFID
+- Mo cua bang mat khau keypad
+- Quan ly relay khoa cua
+- Ket noi Wi-Fi de cau hinh
+- Luu log su kien co ban
+
+Interfaces:
+- RFID
+- Keypad
+- Relay
+- Buzzer
+- Wi-Fi
+
+Power:
+- 12VDC input
+- 5V/3.3V internal conversion
+
+Owner: Z Lab VN
+Current Version: v1.0
+Last Updated: 2026-04-06</div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Lưu trữ nội bộ</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Lưu trữ nội bộ</div>
+
+      <h2>10. Quy định lưu video và đưa file final lên Drive</h2>
+      <h3>10.1. Quy định lưu video</h3>
+      <p>Tất cả video hoàn thiện phải lưu trong <code>Z Lab Workspace/Tiktok Video</code>. Tên video được đặt theo định dạng <strong>&lt;TenPhanNeuCo&gt;_&lt;TenVideoKhongDau&gt;_&lt;YYYYMMDD&gt;</strong>. Không dùng dấu tiếng Việt trong tên file video, không để khoảng trắng thừa và không dùng các từ như <code>final</code>, <code>final2</code>, <code>new</code>, <code>chot</code> trong bản lưu chính thức.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Ví dụ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              RobotArm_GapVaPhanLoaiVat_20260406.mp4<br />
+              AIBox_DemNguoiBangCamera_20260412.mp4<br />
+              SmartDoor_RFIDMoCua_20260418.mp4
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Lưu trữ nội bộ</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Lưu trữ nội bộ</div>
+
+      <h3>10.2. Quy trình đưa file final lên Drive</h3>
+      <ol>
+        <li>Kiểm tra lại đây có phải là bản final hoặc bản chốt để lưu chuẩn hay không.</li>
+        <li>Kiểm tra tên file, tên thư mục và vị trí lưu.</li>
+        <li>Bảo đảm thư mục dự án đã có <code>feature.txt</code>.</li>
+        <li>Đưa file final vào đúng thư mục dự án hoặc thư mục video tương ứng.</li>
+        <li>Nếu là đầu ra chính thức của dự án, ưu tiên đặt trong <code>99_release</code>.</li>
+        <li>Thông báo cho người phụ trách hoặc nhóm liên quan khi cần dùng bản final này.</li>
+      </ol>
+
+      <h2>11. Tổ chức thực hiện</h2>
+      <p>Người phụ trách điều hành hoặc người được giao quản lý tài liệu giữ vai trò duy trì bản chuẩn. Các thành viên có trách nhiệm tuân thủ thống nhất trong quá trình làm việc và lưu trữ. Trường hợp phát sinh điểm chưa phù hợp, tài liệu này có thể được cập nhật ở phiên bản tiếp theo.</p>
+    </section>
+  </main>
+</body>
+</html>

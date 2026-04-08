@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420">
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <text x="600" y="56" font-family="Arial, Helvetica, sans-serif" font-size="30" text-anchor="middle" fill="#111111">Starter Board Selection</text>
+  <rect x="110" y="110" width="400" height="220" rx="18" fill="#f8f8f8" stroke="#111111" stroke-width="2"/>
+  <rect x="690" y="110" width="400" height="220" rx="18" fill="#f8f8f8" stroke="#111111" stroke-width="2"/>
+  <text x="310" y="160" font-family="Arial, Helvetica, sans-serif" font-size="28" text-anchor="middle" fill="#111111">ESP32 DevKit</text>
+  <text x="310" y="205" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">USB + Wi-Fi + GPIO</text>
+  <text x="310" y="240" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">Good for first wireless labs</text>
+  <text x="310" y="275" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">Check CP210x or CH340 driver</text>
+
+  <text x="890" y="160" font-family="Arial, Helvetica, sans-serif" font-size="28" text-anchor="middle" fill="#111111">STM32F103C8T6</text>
+  <text x="890" y="205" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">GPIO + UART basics</text>
+  <text x="890" y="240" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">Use ST-LINK for upload</text>
+  <text x="890" y="275" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#333333">Use USB-UART for monitor</text>
+</svg>

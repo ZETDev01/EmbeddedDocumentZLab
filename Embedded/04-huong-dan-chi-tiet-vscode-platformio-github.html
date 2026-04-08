@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z Lab VN - Hướng dẫn chi tiết: VSCode + PlatformIO + GitHub + Copilot AI</title>
+  <link rel="stylesheet" href="./assets/embedded-doc.css" />
+</head>
+<body>
+  <div class="watermark">Z LAB VN | NỘI BỘ</div>
+  <main class="document">
+    <section class="cover">
+      <div class="cover-frame">
+        <div class="cover-top">
+          <div class="unit">Z Lab VN</div>
+          <div class="line"></div>
+          <div class="cover-kicker">Sổ tay kỹ thuật nội bộ</div>
+        </div>
+
+        <h1>Hướng dẫn chi tiết: Setup toàn bộ môi trường</h1>
+        <h2>Visual Studio Code + PlatformIO + GitHub + GitHub Copilot AI cho lập trình nhúng</h2>
+
+        <div class="cover-box">
+          <table>
+            <tr>
+              <td><strong>Đơn vị</strong></td>
+              <td>Z Lab VN</td>
+            </tr>
+            <tr>
+              <td><strong>Phân loại</strong></td>
+              <td>NỘI BỘ</td>
+            </tr>
+            <tr>
+              <td><strong>Bộ tài liệu</strong></td>
+              <td>Embedded - Phụ lục</td>
+            </tr>
+            <tr>
+              <td><strong>Phiên bản</strong></td>
+              <td>1.0</td>
+            </tr>
+            <tr>
+              <td><strong>Ngày cập nhật</strong></td>
+              <td>08/04/2026</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cover-footer">
+          Tài liệu hướng dẫn từng bước chi tiết
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Mục lục chi tiết hướng dẫn setup</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="toc-title">Mục lục</div>
+      <table class="toc">
+        <tr>
+          <td>1. Cài đặt Visual Studio Code - Từng bước chi tiết</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>2. Cài đặt PlatformIO IDE Extension - Từng bước chi tiết</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>3. Cài đặt Driver cho USB (CP210x, CH340, ST-LINK)</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>4. Kết nối và kiểm tra Board phần cứng</td>
+          <td>Phần IV</td>
+        </tr>
+        <tr>
+          <td>5. Tạo tài khoản GitHub - Từng bước chi tiết</td>
+          <td>Phần V</td>
+        </tr>
+        <tr>
+          <td>6. Liên kết Git với máy tính của bạn</td>
+          <td>Phần VI</td>
+        </tr>
+        <tr>
+          <td>7. Cài đặt GitHub Copilot AI - Từng bước chi tiết</td>
+          <td>Phần VII</td>
+        </tr>
+        <tr>
+          <td>8. Test và Checklist hoàn thành</td>
+          <td>Phần VIII</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- PHẦN 1: CÀI ĐẶT VISUAL STUDIO CODE -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần I - Cài đặt Visual Studio Code</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần I - Cài đặt Visual Studio Code (Từng bước chi tiết)</div>
+
+      <h2>1. Cài đặt Visual Studio Code</h2>
+      <p class="lead">Visual Studio Code là trình soạn thảo mã nguồn được phát triển bởi Microsoft. Nó nhẹ, nhanh chóng và có hỗ trợ rất tốt cho các extension.</p>
+
+      <h3>Bước 1.1: Tải Visual Studio Code</h3>
+      <ol>
+        <li>Mở trình duyệt web của bạn (Chrome, Firefox, Edge, Safari)</li>
+        <li>Truy cập trang chính thức: <strong>https://code.visualstudio.com</strong></li>
+        <li>Bạn sẽ thấy nút Download (xanh lớn ở giữa màn hình)</li>
+        <li>Nó tự động phát hiện hệ điều hành của bạn:
+          <ul>
+            <li><strong>Windows:</strong> Download file .exe</li>
+            <li><strong>macOS:</strong> Download file .dmg</li>
+            <li><strong>Linux:</strong> Download file .deb hoặc .rpm tùy vào distro</li>
+          </ul>
+        </li>
+        <li>Nhấp nút Download để tải file về</li>
+      </ol>
+
+      <div class="note">
+        <strong>Ghi chú:</strong> Kiểm tra file đã tải xuống trong thư mục Downloads của bạn
+      </div>
+
+      <h3>Bước 1.2: Cài đặt Visual Studio Code</h3>
+      
+      <h4>Trên Windows:</h4>
+      <ol>
+        <li>Mở thư mục Downloads (nhấn Windows key + E)</li>
+        <li>Tìm file có tên <strong>VSCodeUserSetup-*.exe</strong></li>
+        <li>Nhấp đôi chuột vào file để chạy installer</li>
+        <li>Chọn <strong>"I accept the agreement"</strong> (Tôi chấp nhận thỏa thuận)</li>
+        <li>Nhấp <strong>Next</strong> để tiếp tục</li>
+        <li>Nhấp <strong>Install</strong> để cài đặt (bỏ qua các tùy chọn nâng cao)</li>
+        <li>Chờ cài đặt hoàn tất (khoảng 1-2 phút)</li>
+        <li>Nhấp <strong>Finish</strong> để hoàn thành</li>
+        <li>Visual Studio Code sẽ tự động mở</li>
+      </ol>
+
+      <h4>Trên macOS:</h4>
+      <ol>
+        <li>Mở Finder, đi đến thư mục Downloads</li>
+        <li>Tìm file <strong>VSCode-darwin-universal.zip</strong></li>
+        <li>Nhấp đôi để giải nén</li>
+        <li>Kéo file <strong>Visual Studio Code.app</strong> vào thư mục Applications</li>
+        <li>Mở Applications, tìm Visual Studio Code và nhấp đôi để khởi động</li>
+      </ol>
+
+      <h4>Trên Linux (Ubuntu/Debian):</h4>
+      <ol>
+        <li>Mở Terminal (Ctrl + Alt + T)</li>
+        <li>Chạy lệnh sau để cài đặt:
+          <div class="codebox">sudo apt update
+sudo apt install code</div>
+        </li>
+        <li>Nhập mật khẩu khi được yêu cầu</li>
+        <li>Chờ cài đặt hoàn tất</li>
+        <li>Khởi động: gõ <strong>code</strong> trong terminal</li>
+      </ol>
+
+      <h3>Bước 1.3: Kiểm tra Visual Studio Code đã cài xong</h3>
+      <ol>
+        <li>Visual Studio Code đã mở, bạn sẽ thấy giao diện chính với các icon bên trái:
+          <ul>
+            <li>Biểu tượng file (Explorer)</li>
+            <li>Biểu tượng tìm kiếm (Search)</li>
+            <li>Biểu tượng git (Source Control)</li>
+            <li>Biểu tượng chạy/debug (Run & Debug)</li>
+            <li>Biểu tượng hộp (Extensions)</li>
+          </ul>
+        </li>
+        <li>Ghi chú phiên bản: Mở menu Help → About (hoặc Ctrl + , để Settings)</li>
+        <li>Nếu bạn thấy đúng những biểu tượng trên, VSCode đã cài xong!</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ Visual Studio Code đã sẵn sàng!</strong> Bạn đã hoàn thành bước đầu tiên. Tiếp theo, chúng ta sẽ cài PlatformIO IDE.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 2: CÀI ĐẶT PLATFORMIO -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Cài đặt PlatformIO IDE Extension</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Cài đặt PlatformIO IDE Extension (Từng bước chi tiết)</div>
+
+      <h2>2. Cài đặt PlatformIO IDE Extension</h2>
+      <p class="lead">PlatformIO là một extension mạnh mẽ giúp phát triển firmware nhúng. Nó hỗ trợ ESP32, STM32 và hàng trăm board khác.</p>
+
+      <h3>Bước 2.1: Mở phần Extensions trong Visual Studio Code</h3>
+      <ol>
+        <li>Visual Studio Code đã mở, nhìn sang bên trái giao diện</li>
+        <li>Bạn sẽ thấy 5 biểu tượng dọc theo cạnh trái:
+          <ul>
+            <li>Biểu tượng đầu tiên: Explorer (thư mục)</li>
+            <li>Biểu tượng thứ hai: Search (tìm kiếm)</li>
+            <li>Biểu tượng thứ ba: Source Control (nhánh git)</li>
+            <li>Biểu tượng thứ tư: Run & Debug (debug)</li>
+            <li><strong>Biểu tượng thứ năm: Extensions (các hình vuông)</strong> ← Nhấp vào đây</li>
+          </ul>
+        </li>
+        <li>Hoặc sử dụng phím tắt: <strong>Ctrl + Shift + X</strong> (Windows/Linux) hoặc <strong>Cmd + Shift + X</strong> (macOS)</li>
+        <li>Bạn sẽ thấy thanh tìm kiếm xuất hiện với dòng chữ "Search Extensions"</li>
+      </ol>
+
+      <h3>Bước 2.2: Tìm kiếm PlatformIO</h3>
+      <ol>
+        <li>Nhấp vào ô tìm kiếm (Search Extensions)</li>
+        <li>Gõ chữ: <strong>platformio</strong></li>
+        <li>Danh sách extension sẽ lọc ra, bạn sẽ thấy:
+          <ul>
+            <li><strong>"PlatformIO IDE"</strong> - Bởi PlatformIO (biểu tượng xanh)</li>
+            <li>Đây là extension chính thức</li>
+          </ul>
+        </li>
+        <li>Nhấp vào PlatformIO IDE (hàng đầu tiên)</li>
+      </ol>
+
+      <h3>Bước 2.3: Cài đặt PlatformIO IDE</h3>
+      <ol>
+        <li>Trang chi tiết PlatformIO sẽ mở, bạn sẽ thấy nút <strong>"Install"</strong> bên phải (màu xanh)</li>
+        <li>Nhấp nút <strong>Install</strong></li>
+        <li>Nút sẽ thay đổi thành <strong>"Uninstall"</strong>, tức là đang cài đặt</li>
+        <li>Chờ cài đặt hoàn tất (khoảng 1-3 phút tùy vào tốc độ mạng)</li>
+        <li>Khi hoàn tất, nó sẽ hiển thị <strong>"PlatformIO IDE is enabled"</strong></li>
+      </ol>
+
+      <h3>Bước 2.4: Khởi động PlatformIO lần đầu</h3>
+      <ol>
+        <li>Sau khi cài xong, Visual Studio Code có thể yêu cầu reload</li>
+        <li>Nhấp <strong>Reload</strong> nếu có</li>
+        <li>PlatformIO sẽ khởi động lần đầu (khoảng dài vài phút)</li>
+        <li>Bạn sẽ thấy thông báo "PlatformIO is initializing..."</li>
+        <li>Chờ cho tới khi nó hoàn tất</li>
+        <li>Xong! Bạn sẽ thấy biểu tượng PlatformIO (hình casa/nhà) xuất hiện ở thanh cạnh)</li>
+      </ol>
+
+      <h3>Bước 2.5: Kiểm tra PlatformIO đã cài xong</h3>
+      <ol>
+        <li>Nhấp vào biểu tượng PlatformIO (hình nhà) ở cạnh trái</li>
+        <li>Thanh PlatformIO sẽ mở, bạn sẽ thấy:
+          <ul>
+            <li>Quick Access</li>
+            <li>Proyects (Dự án)</li>
+            <li>Devices (Thiết bị)</li>
+            <li>Libraries (Thư viện)</li>
+          </ul>
+        </li>
+        <li>Nếu thấy những menu này, PlatformIO đã cài xong!</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ PlatformIO IDE đã sẵn sàng!</strong> Bạn đã hoàn thành bước cài PlatformIO. Tiếp theo, chúng ta sẽ cài driver cho USB.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 3: CÀI ĐẶT DRIVER USB -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Cài đặt Driver USB</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Cài đặt Driver USB (CP210x, CH340, ST-LINK)</div>
+
+      <h2>3. Cài đặt Driver cho USB</h2>
+      <p class="lead">Board ESP32 và STM32 giao tiếp với máy tính qua cáp USB. Bạn cần cài driver cho chip USB để máy tính nhận diện board.</p>
+
+      <h3>Bước 3.1: Kiểm tra board sử dụng chip USB nào</h3>
+      <p>Trước khi cài driver, bạn cần biết board của mình sử dụng chip USB nào. Có ba loại phổ biến:</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Chip USB</th>
+            <th>Dùng trên</th>
+            <th>Phổ biến</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CP210x (Silicone Labs)</td>
+            <td>ESP32 DevKit chính hãng, nhiều board cao cấp</td>
+            <td>Rất phổ biến</td>
+          </tr>
+          <tr>
+            <td>CH340 (WinChipHead)</td>
+            <td>ESP32 boards giá rẻ, STM32 clone boards</td>
+            <td>Phổ biến nhất ở Việt Nam</td>
+          </tr>
+          <tr>
+            <td>ST-LINK</td>
+            <td>STM32 (nạp firmware + debug)</td>
+            <td>Bộ nạp chính hãng STM</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Cách kiểm tra:</strong></p>
+      <ol>
+        <li>Nhìn vào board phần cứng, tìm chip nhỏ gần cổng Micro USB</li>
+        <li>Xem tên chip trên nó: CP210x, CH340, hay ST-LINK</li>
+        <li>Nếu không tìm thấy, hỏi người bán hoặc coi tài liệu board</li>
+      </ol>
+
+      <h3>Bước 3.2: Cài driver CP210x (Silicone Labs)</h3>
+      <p><strong>Cho hệ điều hành Windows:</strong></p>
+      <ol>
+        <li>Truy cập trang: <strong>https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers</strong></li>
+        <li>Tìm phần "Downloads" và chọn Windows</li>
+        <li>Tải file <strong>CP210x Universal Windows Driver</strong></li>
+        <li>Giải nén file zip vừa tải</li>
+        <li>Chạy file <strong>CP210xVCPInstaller_x64.exe</strong> (phiên bản 64-bit) hoặc phiên bản 32-bit nếu dùng Windows 32-bit</li>
+        <li>Nhấp <strong>Install</strong> để cài đặt</li>
+        <li>Khởi động lại máy tính</li>
+      </ol>
+
+      <p><strong>Cho hệ điều hành macOS:</strong></p>
+      <ol>
+        <li>Truy cập trang Silicone Labs ở trên</li>
+        <li>Tải macOS driver</li>
+        <li>Giải nén file .zip</li>
+        <li>Chạy file .pkg</li>
+        <li>Làm theo hướng dẫn trên màn hình</li>
+        <li>Khởi động lại máy tính</li>
+      </ol>
+
+      <p><strong>Cho Linux (Ubuntu/Debian):</strong></p>
+      <ol>
+        <li>Mở Terminal (Ctrl + Alt + T)</li>
+        <li>Chạy lệnh sau:
+          <div class="codebox">sudo apt update
+sudo apt install cp210x</div>
+        </li>
+        <li>Hoặc chạy lệnh: <strong>sudo usermod -a -G dialout $USER</strong> để thêm quyền truy cập USB</li>
+        <li>Khởi động lại máy tính hoặc đăng xuất rồi đăng nhập lại</li>
+      </ol>
+
+      <h3>Bước 3.3: Cài driver CH340 (WinChipHead)</h3>
+      <p><strong>Cho hệ điều hành Windows:</strong></p>
+      <ol>
+        <li>Truy cập trang: <strong>https://www.wch.cn/downloads/CH341SER_EXE.html</strong></li>
+        <li>Tải file <strong>CH341SER.EXE</strong></li>
+        <li>Chạy file, nhấp <strong>INSTALL</strong></li>
+        <li>Khởi động lại máy tính</li>
+      </ol>
+
+      <p><strong>Cho Linux (Ubuntu/Debian):</strong></p>
+      <ol>
+        <li>Mở Terminal</li>
+        <li>Chạy lệnh:
+          <div class="codebox">sudo apt update
+sudo apt install ch341-dkms</div>
+        </li>
+        <li>Hoặc thêm quyền:
+          <div class="codebox">sudo usermod -a -G dialout $USER</div>
+        </li>
+        <li>Khởi động lại máy tính</li>
+      </ol>
+
+      <h3>Bước 3.4: Cài ST-LINK (Cho STM32)</h3>
+      <p><strong>Cho Windows:</strong></p>
+      <ol>
+        <li>Truy cập: <strong>https://www.st.com/en/development-tools/st-link-v2.html</strong></li>
+        <li>Tìm phần downloads, tải ST-LINK driver cho Windows</li>
+        <li>Giải nén, chạy installer</li>
+        <li>Khởi động lại máy</li>
+      </ol>
+
+      <p><strong>Cho Linux:</strong></p>
+      <ol>
+        <li>Chạy lệnh:
+          <div class="codebox">sudo apt update
+sudo apt install stlink-tools openocd</div>
+        </li>
+        <li>Thêm quyền USB:
+          <div class="codebox">sudo usermod -a -G dialout $USER</div>
+        </li>
+        <li>Khởi động lại máy</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ Driver USB đã cài xong!</strong> Bây giờ board của bạn sẽ được nhận diện khi kết nối USB.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 4: KẾT NỐI BOARD -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần IV - Kết nối và kiểm tra Board phần cứng</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần IV - Kết nối và kiểm tra Board</div>
+
+      <h2>4. Kết nối và kiểm tra Board phần cứng</h2>
+      <p class="lead">Sau khi driver cài xong, bạn sẽ kết nối board vào máy tính để kiểm tra nhận diện.</p>
+
+      <h3>Bước 4.1: Kết nối board</h3>
+      <ol>
+        <li>Lấy cáp Micro USB (hoặc USB Type-C tùy board)</li>
+        <li>Cắm một đầu vào cổng USB của board</li>
+        <li>Cắm đầu kia vào USB của máy tính</li>
+        <li>Chờ vài giây để máy tính nhận diện</li>
+      </ol>
+
+      <h3>Bước 4.2: Kiểm tra trên Windows</h3>
+      <ol>
+        <li>Nhấp chuột phải vào "This PC" (Máy tính này) → Manage (Quản lý)</li>
+        <li>Chọn Device Manager (Trình quản lý thiết bị)</li>
+        <li>Tìm phần "Ports (COM &amp; LPT)"</li>
+        <li>Bạn sẽ thấy thứ tương tự "COM X" hoặc "CH340 on COM X" (X là số cổng, ví dụ COM3, COM5)</li>
+        <li>Ghi lại số cổng này - chúng ta sẽ dùng nó sau</li>
+      </ol>
+
+      <h3>Bước 4.3: Kiểm tra trên macOS</h3>
+      <ol>
+        <li>Mở Terminal (Command + Space gõ "terminal")</li>
+        <li>Chạy lệnh:
+          <div class="codebox">ls /dev/tty.*</div>
+        </li>
+        <li>Bạn sẽ thấy cái gì đó giống "/dev/tty.usbserial-xxxxx"</li>
+        <li>Ghi lại cái này</li>
+      </ol>
+
+      <h3>Bước 4.4: Kiểm tra trên Linux</h3>
+      <ol>
+        <li>Mở Terminal (Ctrl + Alt + T)</li>
+        <li>Chạy lệnh:
+          <div class="codebox">ls /dev/ttyUSB* /dev/ttyACM*</div>
+        </li>
+        <li>Bạn sẽ thấy cái gì đó giống "/dev/ttyUSB0" hoặc "/dev/ttyACM0"</li>
+        <li>Ghi lại cái này</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ Board đã được nhận diện!</strong> Bây giờ bạn có thể bắt đầu lập trình với PlatformIO.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 5: TẠO TÀI KHOẢN GITHUB -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần V - Tạo tài khoản GitHub</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần V - Tạo tài khoản GitHub (Từng bước chi tiết)</div>
+
+      <h2>5. Tạo tài khoản GitHub - Từng bước chi tiết</h2>
+      <p class="lead">GitHub là nền tảng quản lý mã nguồn dùng để lưu trữ code, collaborative work và để kết nối với GitHub Copilot AI.</p>
+
+      <h3>Bước 5.1: Truy cập GitHub</h3>
+      <ol>
+        <li>Mở trình duyệt web</li>
+        <li>Truy cập: <strong>https://github.com</strong></li>
+        <li>Bạn sẽ thấy trang chủ GitHub với nút <strong>"Sign up"</strong> (màu xanh ở góc phải trên)</li>
+        <li>Nhấp nút <strong>Sign up</strong></li>
+      </ol>
+
+      <h3>Bước 5.2: Điền thông tin đăng ký</h3>
+      <ol>
+        <li>Nhập email của bạn (email hợp lệ)</li>
+        <li>Nhấp <strong>Continue</strong></li>
+        <li>Tạo mật khẩu (phải có ít nhất 15 ký tự hoặc 8 ký tự kèm chữ cái + số)
+          <ul>
+            <li>Ví dụ: <strong>MyPassword123</strong> (12 ký tự, có hoa, thường, số)</li>
+          </ul>
+        </li>
+        <li>Nhấp <strong>Continue</strong></li>
+        <li>Nhập username của bạn (cái tên hiển thị trên GitHub)
+          <ul>
+            <li>Ví dụ: <strong>myname123</strong> hoặc <strong>john-dev</strong></li>
+            <li>Username chỉ có chữ, số, dấu gạch ngang</li>
+          </ul>
+        </li>
+        <li>Nhấp <strong>Continue</strong></li>
+        <li>Chọn <strong>"Would you like to receive product updates and announcements via email?"</strong> → Chọn <strong>n</strong> (yes/no)</li>
+        <li>Nhấp <strong>Continue</strong></li>
+      </ol>
+
+      <h3>Bước 5.3: Xác minh là con người (Puzzle)</h3>
+      <ol>
+        <li>GitHub sẽ yêu cầu bạn hoàn thiện một puzzle (ghép hình)</li>
+        <li>Làm theo hướng dẫn trên màn hình</li>
+        <li>Nhấp nút xác minh sau khi hoàn thành</li>
+      </ol>
+
+      <h3>Bước 5.4: Xác minh email</h3>
+      <ol>
+        <li>GitHub sẽ gửi email xác minh đến email của bạn</li>
+        <li>Mở email (kiểm tra thư mục spam nếu không thấy)</li>
+        <li>Nhấp vào link xác minh đó</li>
+        <li>Bạn sẽ quay lại GitHub, đây là trang dashboard</li>
+        <li>Chúc mừng! Bạn đã có tài khoản GitHub!</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ Tài khoản GitHub đã tạo xong!</strong> Tiếp theo, chúng ta sẽ liên kết Git với máy tính.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 6: LIÊN KẾT GIT -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần VI - Liên kết Git với máy tính</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần VI - Liên kết Git với máy tính (SSH Key)</div>
+
+      <h2>6. Liên kết Git với máy tính của bạn - SSH Authentication</h2>
+      <p class="lead">Để đẩy code lên GitHub an toàn, bạn cần tạo SSH Key trên máy tính và liên kết nó với tài khoản GitHub.</p>
+
+      <h3>Bước 6.1: Cài đặt Git (nếu chưa có)</h3>
+      <p><strong>Trên Windows:</strong></p>
+      <ol>
+        <li>Truy cập: <strong>https://git-scm.com</strong></li>
+        <li>Nhấp Download, chọn Windows</li>
+        <li>Chạy installer và làm theo hướng dẫn (bỏ qua các tùy chọn nâng cao)</li>
+        <li>Khởi động lại terminal hoặc PowerShell</li>
+      </ol>
+
+      <p><strong>Trên macOS:</strong></p>
+      <ol>
+        <li>Mở Terminal</li>
+        <li>Chạy lệnh:
+          <div class="codebox">brew install git</div>
+        </li>
+        <li>Chờ cài đặt xong</li>
+      </ol>
+
+      <p><strong>Trên Linux (Ubuntu):</strong></p>
+      <ol>
+        <li>Mở Terminal</li>
+        <li>Chạy lệnh:
+          <div class="codebox">sudo apt install git</div>
+        </li>
+      </ol>
+
+      <h3>Bước 6.2: Cấu hình Git toàn cục</h3>
+      <ol>
+        <li>Mở Terminal (hoặc PowerShell/Command Prompt trên Windows)
+          <ul>
+            <li>Windows: Nhấp chuột phải, "Open PowerShell as administrator"</li>
+            <li>macOS: Terminal (Command + Space gõ "terminal")</li>
+            <li>Linux: Ctrl + Alt + T</li>
+          </ul>
+        </li>
+        <li>Chạy lệnh (thay tên và email của bạn):
+          <div class="codebox">git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"</div>
+        </li>
+        <li>Ví dụ:
+          <div class="codebox">git config --global user.name "Tran Van A"
+git config --global user.email "tranabc@gmail.com"</div>
+        </li>
+      </ol>
+
+      <h3>Bước 6.3: Tạo SSH Key</h3>
+      <ol>
+        <li>Mở Terminal/PowerShell</li>
+        <li>Chạy lệnh:
+          <div class="codebox">ssh-keygen -t ed25519 -C "your_email@example.com"</div>
+        </li>
+        <li>Nếu SSH không được hỗ trợ, dùng:
+          <div class="codebox">ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</div>
+        </li>
+        <li>Terminal sẽ hỏi nơi lưu key:
+          <ul>
+            <li>Nhấn Enter để chấp nhận vị trí mặc định (~/.ssh/id_ed25519 hoặc ~/.ssh/id_rsa)</li>
+          </ul>
+        </li>
+        <li>Hỏi passphrase (mật khẩu add-on):
+          <ul>
+            <li>Bạn có thể để trống (nhấn Enter) hoặc tạo mật khẩu thêm</li>
+            <li>Để trống để tiện, nhuwg bớt an toàn</li>
+          </ul>
+        </li>
+        <li>SSH Key đã tạo xong!</li>
+      </ol>
+
+      <h3>Bước 6.4: Lấy SSH Public Key</h3>
+      <ol>
+        <li>Mở Terminal/PowerShell</li>
+        <li>Chạy lệnh để xem public key:
+          <div class="codebox">cat ~/.ssh/id_ed25519.pub</div>
+        </li>
+        <li>Hoặc trên Windows PowerShell:
+          <div class="codebox">Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub</div>
+        </li>
+        <li>Cả đoạn text bắt đầu bằng "ssh-ed25519..." sẽ hiển thị</li>
+        <li>Sao chép toàn bộ đoạn này (Ctrl + C)</li>
+      </ol>
+
+      <h3>Bước 6.5: Thêm SSH Key vào GitHub</h3>
+      <ol>
+        <li>Đăng nhập GitHub: https://github.com</li>
+        <li>Nhấp ảnh đại diện ở góc phải trên → Settings</li>
+        <li>Bên trái, chọn "SSH and GPG keys"</li>
+        <li>Nhấp nút xanh "New SSH key"</li>
+        <li>Nhập tiêu đề: <strong>My Computer SSH Key</strong> (hoặc tên máy tính của bạn)</li>
+        <li>Dán đoạn public key vừa sao chép vào ô "Key"</li>
+        <li>Nhấp "Add SSH key"</li>
+        <li>GitHub có thể yêu cầu xác minh mật khẩu - nhập mật khẩu GitHub của bạn</li>
+        <li>SSH Key đã thêm vào GitHub!</li>
+      </ol>
+
+      <h3>Bước 6.6: Kiểm tra kết nối SSH</h3>
+      <ol>
+        <li>Mở Terminal/PowerShell</li>
+        <li>Chạy lệnh:
+          <div class="codebox">ssh -T git@github.com</div>
+        </li>
+        <li>Terminal hỏi "Are you sure you want to continue..." → Gõ <strong>yes</strong></li>
+        <li>Nếu thấy dòng "Hi [username]! You've successfully authenticated..." → Thành công!</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ Git đã kết nối với GitHub!</strong> Bây giờ bạn có thể clone, push, pull code từ GitHub.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 7: CÀI ĐẶT GITHUB COPILOT AI -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần VII - Cài đặt GitHub Copilot AI</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần VII - Cài đặt GitHub Copilot AI (Từng bước chi tiết)</div>
+
+      <h2>7. Cài đặt GitHub Copilot AI - Hỗ trợ lập trình bằng AI</h2>
+      <p class="lead">GitHub Copilot là một AI giúp bạn viết code nhanh hơn. Nó có thể tự động hoàn thành code, gợi ý hàm, và giải thích code cho bạn.</p>
+
+      <h3>Bước 7.1: Cài đặt GitHub Copilot Extension</h3>
+      <ol>
+        <li>Mở Visual Studio Code</li>
+        <li>Nhấp biểu tượng Extensions (5 hình vuông) ở cạnh trái</li>
+        <li>Gõ "github copilot" trong ô tìm kiếm</li>
+        <li>Bạn sẽ thấy "GitHub Copilot" (official, bởi GitHub)</li>
+        <li>Nhấp vào nó</li>
+        <li>Nhấp nút <strong>"Install"</strong> (xanh)</li>
+        <li>Chờ cài đặt xong (vài giây)</li>
+      </ol>
+
+      <h3>Bước 7.2: Cài GitHub Copilot Chat (thêm tính năng chat)</h3>
+      <ol>
+        <li>Vẫn trong Extensions</li>
+        <li>Tìm "GitHub Copilot Chat"</li>
+        <li>Nhấp Install</li>
+      </ol>
+
+      <h3>Bước 7.3: Đăng nhập GitHub trên Visual Studio Code</h3>
+      <ol>
+        <li>Sau khi cài xong, Visual Studio Code sẽ yêu cầu bạn đăng nhập GitHub</li>
+        <li>Nhấp nút <strong>"Sign in with GitHub to use Copilot"</strong> (nếu thấy)</li>
+        <li>Hoặc: Nhấp Ctrl + Shift + P (mở Command Palette)</li>
+        <li>Gõ: "GitHub Copilot: Authorize with GitHub"</li>
+        <li>Nhấp vào lệnh đó</li>
+      </ol>
+
+      <h3>Bước 7.4: Cấp quyền cho Copilot</h3>
+      <ol>
+        <li>Trình duyệt sẽ mở GitHub login page</li>
+        <li>Đăng nhập GitHub (nếu chưa)</li>
+        <li>GitHub sẽ yêu cầu cấp quyền cho Visual Studio Code:
+          <ul>
+            <li>"Authorize GitHub Copilot for VS Code"</li>
+          </ul>
+        </li>
+        <li>Nhấp <strong>"Authorize"</strong></li>
+        <li>Bạn sẽ thấy "Device activation successful"</li>
+        <li>Quay lại Visual Studio Code</li>
+      </ol>
+
+      <h3>Bước 7.5: Kiểm tra Copilot đã sActivate</h3>
+      <ol>
+        <li>Mở file code bất kỳ (hoặc tạo file .cpp mới)</li>
+        <li>Bắt đầu gõ code</li>
+        <li>Bạn sẽ thấy gợi ý Copilot xuất hiện (nền xanh nhạt)</li>
+        <li>Nhấn Tab hoặc Enter để chấp nhận gợi ý</li>
+        <li>Nhấn Escape để từ chối</li>
+      </ol>
+
+      <h3>Bước 7.6: Sử dụng Copilot Chat để hỏi câu hỏi</h3>
+      <ol>
+        <li>Nhấn Ctrl + Shift + I (hoặc Cmd + Shift + I trên macOS)</li>
+        <li>Hoặc: Nhấp biểu tượng chat Copilot ở cạnh trái (nếu được thêm)</li>
+        <li>Ô chat sẽ mở</li>
+        <li>Bạn có thể hỏi câu hỏi bằng tiếng Anh:
+          <ul>
+            <li>Ví dụ: <strong>"How to blink LED on ESP32?"</strong></li>
+            <li>Ví dụ: <strong>"Explain this code for me"</strong></li>
+            <li>Ví dụ: <strong>"Generate a code to read ADC value"</strong></li>
+          </ul>
+        </li>
+        <li>Gõ câu hỏi, nhấn Enter</li>
+        <li>Copilot sẽ trả lời trong ô chat</li>
+      </ol>
+
+      <div class="note">
+        <strong>Ghi chú về GitHub Copilot miễn phí và trả phí:</strong>
+        <ul>
+          <li>GitHub Copilot có bản <strong>miễn phí giới hạn</strong> (hàng tháng)</li>
+          <li>Có bản <strong>trả phí $10/tháng</strong> (unlimited)</li>
+          <li>Sinh viên được dùng <strong>miễn phí</strong> với tài khoản GitHub Student Pack</li>
+          <li>Trang đăng ký: https://github.com/copilot (sẽ thấy tuỳ chọn giới hạn hay không giới hạn)</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <p><strong>✓ GitHub Copilot AI đã sẵn sàng!</strong> Bây giờ bạn có AI giúp viết code nhanh hơn.</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 8: TEST VÀ CHECKLIST -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần VIII - Test và Checklist hoàn thành</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần VIII - Test và Checklist hoàn thành toàn bộ setup</div>
+
+      <h2>8. Test và Checklist hoàn thành</h2>
+      <p class="lead">Kiểm tra xem tất cả các bước đã hoàn thành chưa.</p>
+
+      <h3>Checklist kiểm tra</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Công việc</th>
+            <th>Tình trạng</th>
+            <th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>✓ Visual Studio Code cài xong</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Phiên bản: ___________</td>
+          </tr>
+          <tr>
+            <td>✓ PlatformIO IDE cài xong</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Biểu tượng nhà xuất hiện</td>
+          </tr>
+          <tr>
+            <td>✓ Driver USB cài xong (CP210x/CH340/ST-LINK)</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Chip USB: ___________</td>
+          </tr>
+          <tr>
+            <td>✓ Board nhận diện (COM port / /dev/ttyUSB)</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Cổng: ___________</td>
+          </tr>
+          <tr>
+            <td>✓ Tài khoản GitHub tạo xong</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Username: ___________</td>
+          </tr>
+          <tr>
+            <td>✓ SSH Key đã liên kết GitHub</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>ssh -T git@github.com → OK</td>
+          </tr>
+          <tr>
+            <td>✓ GitHub Copilot cài xong</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Đã đăng nhập + hoạt động</td>
+          </tr>
+          <tr>
+            <td>✓ Sample project chạy được</td>
+            <td>☐ Xong / ☐ Chưa</td>
+            <td>Build → Upload → Monitor OK</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Bước test cuối cùng: Chạy sample project ESP32 Blink</h3>
+      <ol>
+        <li>Mở folder dự án: /Embedded/samples/esp32-blink-pio</li>
+        <li>Kết nối board ESP32 vào USB</li>
+        <li>Trong PlatformIO, nhấp Build (biểu tượng checkbox)</li>
+        <li>Nếu build thành công, nhấp Upload (biểu tượng mũi tên lên)</li>
+        <li>Nếu upload thành công, nhấp Monitor (biểu tượng phích cắm)</li>
+        <li>Bạn sẽ thấy log xuất hiện trên serial monitor</li>
+        <li>LED trên board sẽ blink (nhấp nháy)</li>
+        <li>✓ Setup toàn bộ đã hoàn thành!</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>✓ Chúc mừng! Bạn đã setup xong toàn bộ môi trường lập trình nhúng với Visual Studio Code, PlatformIO, GitHub và GitHub Copilot AI!</strong></p>
+        <p>Bây giờ bạn đã sẵn sàng để:</p>
+        <ul>
+          <li>Viết code cho ESP32 và STM32</li>
+          <li>Sử dụng AI (Copilot) để hỗ trợ lập trình</li>
+          <li>Quản lý code trên GitHub</li>
+          <li>Cộng tác với các thành viên khác trong team</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PHẦN 9: THAM KHẢO NHANH -->
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần Tham khảo nhanh - Các lệnh thường dùng</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Tham khảo nhanh - Các lệnh thường dùng</div>
+
+      <h2>Tham khảo nhanh - Lệnh Git thường dùng</h2>
+
+      <h3>Lệnh Git cơ bản (Terminal)</h3>
+      <div class="codebox"># Clone repository từ GitHub
+git clone git@github.com:username/repo-name.git
+
+# Xem trạng thái thay đổi
+git status
+
+# Thêm file để commit
+git add .
+
+# Commit với thông điệp
+git commit -m "Nội dung thay đổi"
+
+# Đẩy lên GitHub
+git push
+
+# Kéo code mới từ GitHub
+git pull
+
+# Xem lịch sử commit
+git log --oneline</div>
+
+      <h2>Tham khảo nhanh - Phím tắt Visual Studio Code</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Chức năng</th>
+            <th>Windows/Linux</th>
+            <th>macOS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mở Command Palette</td>
+            <td>Ctrl + Shift + P</td>
+            <td>Cmd + Shift + P</td>
+          </tr>
+          <tr>
+            <td>Mở Explorer (File)</td>
+            <td>Ctrl + Shift + E</td>
+            <td>Cmd + Shift + E</td>
+          </tr>
+          <tr>
+            <td>Mở Extensions</td>
+            <td>Ctrl + Shift + X</td>
+            <td>Cmd + Shift + X</td>
+          </tr>
+          <tr>
+            <td>Mở Source Control (Git)</td>
+            <td>Ctrl + Shift + G</td>
+            <td>Cmd + Shift + G</td>
+          </tr>
+          <tr>
+            <td>Copilot Chat</td>
+            <td>Ctrl + Shift + I</td>
+            <td>Cmd + Shift + I</td>
+          </tr>
+          <tr>
+            <td>Format Code</td>
+            <td>Shift + Alt + F</td>
+            <td>Shift + Option + F</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Tham khảo nhanh - Phím tắt PlatformIO</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Chức năng</th>
+            <th>Phím tắt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Build Project</td>
+            <td>Ctrl + Shift + B</td>
+          </tr>
+          <tr>
+            <td>Upload</td>
+            <td>Ctrl + Alt + U</td>
+          </tr>
+          <tr>
+            <td>Serial Monitor</td>
+            <td>Ctrl + Alt + S</td>
+          </tr>
+          <tr>
+            <td>Clean Project</td>
+            <td>Ctrl + Shift + Delete</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Để tìm hiểu thêm:</strong> Xem các file khác trong thư mục Embedded:</p>
+        <ul>
+          <li>01-so-tay-lap-trinh-nhung-vscode.html - Sổ tay cơ bản</li>
+          <li>02-thuc-hanh-sample-va-checklist.html - Hướng dẫn thực hành</li>
+          <li>03-huong-dan-ai-cho-firmware.html - Hướng dẫn dùng AI</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,403 @@
+@page {
+  size: A4;
+  margin: 16mm 15mm 18mm 15mm;
+}
+
+:root {
+  --ink: #101010;
+  --muted: #4d4d4d;
+  --line: #7a7a7a;
+  --line-soft: #b8b8b8;
+  --light: #f1f1f1;
+  --lighter: #f8f8f8;
+  --paper: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 14.8px;
+  line-height: 1.64;
+}
+
+body {
+  counter-reset: page;
+}
+
+.watermark {
+  position: fixed;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 78px;
+  font-weight: 700;
+  letter-spacing: 9px;
+  color: rgba(0, 0, 0, 0.04);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.document {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 18px 0 44px;
+}
+
+.cover {
+  min-height: 1048px;
+  padding: 18px;
+  border: 1.8px solid #000000;
+  page-break-after: always;
+  position: relative;
+  background: #ffffff;
+}
+
+.cover-frame {
+  min-height: 1006px;
+  border: 1px solid #000000;
+  padding: 28px 38px 30px;
+  position: relative;
+}
+
+.cover-top {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.cover-top .unit {
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cover-top .line {
+  width: 132px;
+  height: 1px;
+  background: #000000;
+  margin: 18px auto 26px;
+}
+
+.cover-kicker {
+  text-align: center;
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cover h1 {
+  margin: 88px 0 14px;
+  text-align: center;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 31px;
+  line-height: 1.24;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.cover h2 {
+  margin: 0;
+  text-align: center;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.56;
+  color: #222222;
+  max-width: 610px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover-box {
+  width: 74%;
+  margin: 70px auto 0;
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  background: #fcfcfc;
+}
+
+.cover-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cover-box td {
+  border: 1px solid #000000;
+  padding: 10px 14px;
+  font-size: 13.8px;
+}
+
+.cover-footer {
+  position: absolute;
+  left: 42px;
+  right: 42px;
+  bottom: 34px;
+  text-align: center;
+  font-size: 12.6px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.page {
+  position: relative;
+  border: 1px solid #000000;
+  padding: 18px 24px 40px;
+  margin-top: 18px;
+  page-break-after: always;
+  background: var(--paper);
+  counter-increment: page;
+}
+
+.page:last-child {
+  page-break-after: auto;
+}
+
+.page::after {
+  content: "Trang " counter(page);
+  position: absolute;
+  right: 28px;
+  bottom: 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 9px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+}
+
+.header .title {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0 0 13px;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 24px;
+  line-height: 1.34;
+  letter-spacing: 0.01em;
+}
+
+h3 {
+  margin: 20px 0 9px;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.42;
+}
+
+h4 {
+  margin: 16px 0 8px;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 16px;
+  line-height: 1.42;
+}
+
+p {
+  margin: 0 0 10px;
+  text-align: justify;
+  text-indent: 1.6em;
+  widows: 3;
+  orphans: 3;
+}
+
+ul,
+ol {
+  margin: 8px 0 14px 24px;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  widows: 2;
+  orphans: 2;
+}
+
+.lead {
+  margin-bottom: 16px;
+  font-size: 15.3px;
+  line-height: 1.68;
+  text-indent: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 16px;
+  font-size: 13.8px;
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.table th,
+.table td {
+  border: 1px solid #000000;
+  padding: 9px 10px;
+  vertical-align: top;
+}
+
+.table th {
+  background: var(--light);
+  text-align: left;
+  font-weight: 700;
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+}
+
+.codebox {
+  border: 1px solid #000000;
+  background: var(--lighter);
+  padding: 11px 13px;
+  margin: 12px 0 16px;
+  font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+  font-size: 12.3px;
+  line-height: 1.52;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.note {
+  border-left: 3px solid #000000;
+  padding: 2px 0 2px 14px;
+  margin: 12px 0;
+  color: #363636;
+  font-size: 13.9px;
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.toc-title {
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.toc {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 13.8px;
+}
+
+.toc td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+
+.toc td:last-child {
+  width: 110px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.section-band {
+  margin: 0 0 18px;
+  padding: 8px 12px;
+  border: 1px solid #000000;
+  background: var(--lighter);
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary-box,
+.figure-box {
+  border: 1px solid #000000;
+  padding: 10px 12px;
+  margin: 12px 0 16px;
+  background: #fcfcfc;
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.summary-box p:last-child,
+.figure-box p:last-child {
+  margin-bottom: 0;
+}
+
+.summary-box p,
+.note p,
+.figure-box p {
+  text-indent: 0;
+}
+
+.figure-box img {
+  width: 100%;
+  display: block;
+  border: 1px solid #000000;
+  margin-bottom: 8px;
+  max-height: 250px;
+  object-fit: contain;
+}
+
+h2,
+h3,
+h4 {
+  break-after: avoid-page;
+  page-break-after: avoid;
+}
+
+h2 + p,
+h3 + p,
+h3 + ol,
+h3 + ul {
+  page-break-before: avoid;
+}
+
+ul,
+ol,
+figure,
+.figure-box,
+.summary-box,
+.note,
+.codebox {
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.page-break-before {
+  page-break-before: always;
+}
+
+@media screen {
+  body {
+    font-size: 15px;
+  }
+
+  .page,
+  .cover {
+    box-shadow: 0 0 0 1px #dddddd;
+  }
+}
+
+@media print {
+  .document {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}

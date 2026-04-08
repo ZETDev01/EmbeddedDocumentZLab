@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z Lab VN - Thực hành sample và checklist kiểm tra</title>
+  <link rel="stylesheet" href="./assets/embedded-doc.css" />
+</head>
+<body>
+  <div class="watermark">Z LAB VN | NỘI BỘ</div>
+  <main class="document">
+    <section class="cover">
+      <div class="cover-frame">
+        <div class="cover-top">
+          <div class="unit">Z Lab VN</div>
+          <div class="line"></div>
+          <div class="cover-kicker">Phụ lục kỹ thuật nội bộ</div>
+        </div>
+
+        <h1>Thực hành sample và checklist kiểm tra</h1>
+        <h2>Tài liệu hướng dẫn mở sample, nạp code, theo dõi serial monitor và xử lý các lỗi thường gặp đối với ESP32 DevKit và STM32F103C8T6</h2>
+
+        <div class="cover-box">
+          <table>
+            <tr>
+              <td><strong>Đơn vị</strong></td>
+              <td>Z Lab VN</td>
+            </tr>
+            <tr>
+              <td><strong>Phân loại</strong></td>
+              <td>NỘI BỘ</td>
+            </tr>
+            <tr>
+              <td><strong>Phiên bản</strong></td>
+              <td>1.0</td>
+            </tr>
+            <tr>
+              <td><strong>Ngày cập nhật</strong></td>
+              <td>08/04/2026</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cover-footer">
+          Tài liệu sử dụng nội bộ cho Z Lab VN
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Mục lục tài liệu</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="toc-title">Mục lục</div>
+      <table class="toc">
+        <tr>
+          <td>1. Mục đích sử dụng</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>2. Danh mục sample project</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>3. Quy trình thực hành với ESP32</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>4. Quy trình thực hành với STM32</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>5. Checklist kiểm tra và xử lý lỗi</td>
+          <td>Phần IV</td>
+        </tr>
+        <tr>
+          <td>6. Mẫu biên bản test tối thiểu</td>
+          <td>Phần cuối</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Thực hành sample và checklist kiểm tra</div>
+        <div>Phân loại: NỘI BỘ</div>
+      </div>
+
+      <div class="section-band">Phần mở đầu</div>
+
+      <h2>1. Mục đích sử dụng</h2>
+      <p class="lead">Tài liệu này được dùng để hướng dẫn thao tác thực hành trực tiếp trên các sample project đi kèm trong thư mục Embedded/samples.</p>
+      <p>Mục tiêu của tài liệu là giúp người học kiểm tra được môi trường cài đặt, quy trình nạp code, việc nhận cổng kết nối và khả năng theo dõi log của phần cứng trong điều kiện thực tế.</p>
+
+      <h2>2. Danh mục sample project</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tên sample</th>
+            <th>Mục tiêu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>samples/esp32-blink-pio</td>
+            <td>Kiểm tra build, upload, LED và serial monitor cơ bản cho ESP32</td>
+          </tr>
+          <tr>
+            <td>samples/esp32-wifi-scan-pio</td>
+            <td>Kiểm tra stack Wi-Fi, quét mạng và đọc log RSSI trên ESP32</td>
+          </tr>
+          <tr>
+            <td>samples/stm32-blink-pio</td>
+            <td>Kiểm tra build, upload, LED và serial monitor cơ bản cho STM32</td>
+          </tr>
+          <tr>
+            <td>samples/stm32-uart-pio</td>
+            <td>Kiểm tra UART log, counter và thời gian hoạt động trên STM32</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="figure-box">
+        <img src="./assets/figures/lab-setup-flow.svg" alt="Lab setup flow" />
+        <p><strong>Hình 1.</strong> Quy trình kiểm tra trước khi chạy sample project.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Thực hành với ESP32</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Thực hành với ESP32</div>
+
+      <h2>3. Quy trình thực hành với ESP32</h2>
+      <p>Track ESP32 được dùng để kiểm tra chuỗi thao tác cơ bản gồm Build, Upload, Monitor, LED output và Wi-Fi scan. Việc thực hành được thực hiện theo thứ tự từ bài đơn giản đến bài có sử dụng kết nối không dây.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/esp32-lab-flow.svg" alt="ESP32 lab flow" />
+        <p><strong>Hình 2.</strong> Chuỗi bài thực hành ESP32 từ sample Blink đến sample Wi-Fi Scan.</p>
+      </div>
+
+      <h3>3.1. Sample ESP32 Blink</h3>
+      <p>Thư mục thực hành: Embedded/samples/esp32-blink-pio.</p>
+      <div class="codebox">[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+monitor_speed = 115200</div>
+      <ol>
+        <li>Mở thư mục sample trong Visual Studio Code.</li>
+        <li>Đợi PlatformIO hoàn tất quá trình chuẩn bị package lần đầu.</li>
+        <li>Thực hiện Build và kiểm tra kết quả biên dịch.</li>
+        <li>Thực hiện Upload. Nếu board yêu cầu, giữ nút BOOT trong thời điểm bắt đầu nạp.</li>
+        <li>Mở Monitor và xác nhận log trạng thái LED.</li>
+      </ol>
+
+      <h3>3.2. Sample ESP32 Wi-Fi Scan</h3>
+      <p>Thư mục thực hành: Embedded/samples/esp32-wifi-scan-pio.</p>
+      <ol>
+        <li>Thực hiện Build và Upload tương tự sample Blink.</li>
+        <li>Mở Serial Monitor ở tốc độ 115200 baud.</li>
+        <li>Quan sát danh sách các mạng Wi-Fi, tên SSID và giá trị RSSI.</li>
+        <li>Xác nhận thiết bị quét lại theo chu kỳ mà không bị reset bất thường.</li>
+      </ol>
+
+      <div class="note">
+        Khi sample Wi-Fi scan không trả về mạng nào, cần kiểm tra cáp nguồn, vị trí đặt board, log monitor và trạng thái khởi tạo Wi-Fi trước khi sửa logic xử lý dữ liệu.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Thực hành với STM32</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Thực hành với STM32</div>
+
+      <h2>4. Quy trình thực hành với STM32</h2>
+      <p>Track STM32 được dùng để kiểm tra thao tác nạp code qua ST-LINK, xác nhận LED onboard và theo dõi UART log. Board chuẩn khuyến nghị là STM32F103C8T6.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/stm32-lab-flow.svg" alt="STM32 lab flow" />
+        <p><strong>Hình 3.</strong> Chuỗi bài thực hành STM32 từ sample Blink đến sample UART Counter.</p>
+      </div>
+
+      <h3>4.1. Sample STM32 Blink</h3>
+      <p>Thư mục thực hành: Embedded/samples/stm32-blink-pio.</p>
+      <div class="codebox">[env:bluepill_f103c8]
+platform = ststm32
+board = bluepill_f103c8
+framework = arduino
+monitor_speed = 115200</div>
+      <ol>
+        <li>Kết nối board với bộ nạp ST-LINK đúng chân SWD.</li>
+        <li>Nếu cần theo dõi serial monitor, kết nối thêm USB-UART đúng chân TX, RX và GND.</li>
+        <li>Mở thư mục sample trong Visual Studio Code.</li>
+        <li>Thực hiện Build, sau đó Upload.</li>
+        <li>Quan sát LED onboard và theo dõi log trên monitor nếu đã nối USB-UART.</li>
+      </ol>
+
+      <h3>4.2. Sample STM32 UART Counter</h3>
+      <p>Thư mục thực hành: Embedded/samples/stm32-uart-pio.</p>
+      <ol>
+        <li>Thực hiện Build và Upload project.</li>
+        <li>Mở Serial Monitor đúng cổng USB-UART và đúng tốc độ.</li>
+        <li>Xác nhận bộ đếm tăng dần, uptime tăng dần và trạng thái LED thay đổi theo chu kỳ.</li>
+      </ol>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần IV - Checklist kiểm tra</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần IV - Checklist kiểm tra</div>
+
+      <h2>5. Checklist kiểm tra và xử lý lỗi</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Hiện tượng</th>
+            <th>Nguyên nhân có khả năng cao</th>
+            <th>Thứ tự kiểm tra ưu tiên</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Không xuất hiện cổng COM hoặc thiết bị serial</td>
+            <td>Cáp không có data, thiếu driver, cổng USB lỗi, board lỗi</td>
+            <td>Đổi cáp, đổi cổng USB, kiểm tra driver, cắm lại board</td>
+          </tr>
+          <tr>
+            <td>Build thất bại</td>
+            <td>Sai board, thiếu package, lỗi cú pháp, sai framework</td>
+            <td>Kiểm tra platformio.ini, xem log compile, xác nhận tên board</td>
+          </tr>
+          <tr>
+            <td>Upload thất bại</td>
+            <td>Sai cổng, serial đang bị chiếm, boot mode chưa đúng</td>
+            <td>Đóng monitor, kiểm tra upload port, thử lại thao tác nạp</td>
+          </tr>
+          <tr>
+            <td>Monitor hiển thị ký tự không đọc được</td>
+            <td>Sai tốc độ truyền</td>
+            <td>Đối chiếu monitor_speed với phần khởi tạo serial trong chương trình</td>
+          </tr>
+          <tr>
+            <td>Upload thành công nhưng chương trình không chạy đúng</td>
+            <td>Sai chân LED, lỗi nguồn, reset lặp, logic chưa vào đúng nhánh</td>
+            <td>Quay về sample tối thiểu, xác nhận lại phần cứng và log</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        Nguyên tắc xử lý lỗi là chỉ thay đổi một yếu tố tại một thời điểm. Không đồng thời thay code, đổi cáp, đổi board và đổi cấu hình trong cùng một lần kiểm tra.
+      </div>
+
+      <h2>6. Mẫu biên bản test tối thiểu</h2>
+      <div class="codebox">Date:
+Board:
+Project:
+Cable:
+Detected Port:
+Build:
+Upload:
+Monitor:
+Observed Result:
+Open Issues:
+Tester:</div>
+    </section>
+  </main>
+</body>
+</html>

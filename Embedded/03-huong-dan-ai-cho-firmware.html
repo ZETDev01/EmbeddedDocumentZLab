@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z Lab VN - Hướng dẫn sử dụng AI cho firmware</title>
+  <link rel="stylesheet" href="./assets/embedded-doc.css" />
+</head>
+<body>
+  <div class="watermark">Z LAB VN | NỘI BỘ</div>
+  <main class="document">
+    <section class="cover">
+      <div class="cover-frame">
+        <div class="cover-top">
+          <div class="unit">Z Lab VN</div>
+          <div class="line"></div>
+          <div class="cover-kicker">Phụ lục kỹ thuật nội bộ</div>
+        </div>
+
+        <h1>Hướng dẫn sử dụng AI cho firmware</h1>
+        <h2>Tài liệu quy định phạm vi sử dụng AI, mẫu prompt kỹ thuật và nguyên tắc kiểm tra đầu ra khi áp dụng AI trong lập trình nhúng</h2>
+
+        <div class="cover-box">
+          <table>
+            <tr>
+              <td><strong>Đơn vị</strong></td>
+              <td>Z Lab VN</td>
+            </tr>
+            <tr>
+              <td><strong>Phân loại</strong></td>
+              <td>NỘI BỘ</td>
+            </tr>
+            <tr>
+              <td><strong>Phiên bản</strong></td>
+              <td>1.0</td>
+            </tr>
+            <tr>
+              <td><strong>Ngày cập nhật</strong></td>
+              <td>08/04/2026</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cover-footer">
+          Tài liệu sử dụng nội bộ cho Z Lab VN
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Mục lục tài liệu</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="toc-title">Mục lục</div>
+      <table class="toc">
+        <tr>
+          <td>1. Mục đích và nguyên tắc chung</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>2. Phạm vi công việc phù hợp cho AI</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>3. Các nội dung không giao hoàn toàn cho AI</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>4. Mẫu prompt kỹ thuật</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>5. Checklist rà soát đầu ra</td>
+          <td>Phần III</td>
+        </tr>
+        <tr>
+          <td>6. Quy trình áp dụng trong nội bộ</td>
+          <td>Phần cuối</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Hướng dẫn sử dụng AI cho firmware</div>
+        <div>Phân loại: NỘI BỘ</div>
+      </div>
+
+      <div class="section-band">Phần mở đầu</div>
+
+      <h2>1. Mục đích và nguyên tắc chung</h2>
+      <p class="lead">Tài liệu này được sử dụng để thống nhất cách dùng AI trong quá trình soạn thảo, kiểm tra và mở rộng mã nguồn firmware tại Z Lab VN.</p>
+      <p>Mục tiêu của tài liệu là xác định rõ AI được sử dụng ở những phần việc nào, cần cung cấp cho AI những thông tin gì, và phải rà soát đầu ra theo những tiêu chí nào trước khi tích hợp vào project thực tế.</p>
+      <p>AI được xem là công cụ hỗ trợ tăng tốc công việc, không phải nguồn quyết định cuối cùng về tính đúng đắn của phần cứng, sơ đồ chân, mức điện áp hoặc các cơ chế an toàn của hệ thống.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/ai-firmware-loop.svg" alt="AI firmware loop" />
+        <p><strong>Hình 1.</strong> Vòng lặp chuẩn khi sử dụng AI để hỗ trợ lập trình firmware.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần I - Phạm vi sử dụng AI</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần I - Phạm vi sử dụng AI</div>
+
+      <h2>2. Phạm vi công việc phù hợp cho AI</h2>
+      <ol>
+        <li>Soạn khung main.cpp hoặc module nhỏ với phạm vi chức năng rõ ràng.</li>
+        <li>Giải thích lỗi biên dịch, lỗi liên kết hoặc log runtime có độ dài lớn.</li>
+        <li>Đề xuất cấu trúc hàm, tách module, bổ sung comment kỹ thuật và checklist kiểm tra.</li>
+        <li>Viết tài liệu README, mô tả tham số cấu hình và mẫu biên bản test.</li>
+      </ol>
+
+      <h2>3. Các nội dung không giao hoàn toàn cho AI</h2>
+      <ol>
+        <li>Quyết định sơ đồ chân khi chưa có phần cứng hoặc pinout chính thức.</li>
+        <li>Đánh giá điện áp, dòng tải, công suất và các thành phần liên quan tới an toàn điện.</li>
+        <li>Cấu hình boot mode, clock tree, fuse, phân vùng flash hoặc cơ chế bảo mật sản phẩm.</li>
+        <li>Điều khiển thiết bị có rủi ro gây hỏng mạch nếu logic sai.</li>
+      </ol>
+
+      <div class="note">
+        Mọi nội dung liên quan tới phần cứng thật đều phải được đối chiếu lại với datasheet, sơ đồ mạch và tài liệu hãng trước khi triển khai trên thiết bị.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Mẫu prompt kỹ thuật</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Mẫu prompt kỹ thuật</div>
+
+      <h2>4. Mẫu prompt kỹ thuật</h2>
+      <p>Khi gửi yêu cầu cho AI, cần cung cấp đầy đủ bối cảnh kỹ thuật để giảm nguy cơ tạo ra đoạn mã không phù hợp với phần cứng hoặc framework đang sử dụng.</p>
+
+      <div class="codebox">Board:
+MCU:
+Framework:
+IDE:
+Connected peripherals:
+GPIO mapping:
+Voltage levels:
+Goal:
+Constraints:
+Expected output:</div>
+
+      <h3>4.1. Ví dụ prompt cho ESP32</h3>
+      <div class="codebox">Board: ESP32 DevKit
+Framework: Arduino on PlatformIO
+IDE: VS Code
+Connected peripherals: LED on GPIO2, push button on GPIO18 with internal pull-up
+Goal: Toggle the LED when the button is pressed
+Constraints: Use software debounce, avoid third-party libraries
+Expected output: Complete main.cpp and a short explanation</div>
+
+      <h3>4.2. Ví dụ prompt cho STM32</h3>
+      <div class="codebox">Board: STM32F103C8T6
+Framework: Arduino on PlatformIO
+Goal: Print a counter over UART every one second and toggle LED_BUILTIN
+Constraints: Keep the code simple, no third-party library, baudrate 115200
+Expected output: Complete main.cpp</div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Checklist rà soát</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Checklist rà soát</div>
+
+      <h2>5. Checklist rà soát đầu ra</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Hạng mục</th>
+            <th>Nội dung cần xác nhận</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Board</td>
+            <td>Đoạn mã có đúng board và đúng framework đang dùng hay không</td>
+          </tr>
+          <tr>
+            <td>GPIO</td>
+            <td>Chân được sử dụng có tồn tại trên board thật và không xung đột với boot mode hay phần cứng khác hay không</td>
+          </tr>
+          <tr>
+            <td>Điện áp</td>
+            <td>Các giả định của đoạn mã có phù hợp với mức điện áp và cách nối ngoại vi hay không</td>
+          </tr>
+          <tr>
+            <td>Quan sát</td>
+            <td>Đoạn mã có đủ log hoặc dấu hiệu quan sát để kiểm tra trên phần cứng thật hay không</td>
+          </tr>
+          <tr>
+            <td>Phạm vi tích hợp</td>
+            <td>Đã kiểm tra module ở quy mô nhỏ trước khi nhập vào project chính hay chưa</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>6. Quy trình áp dụng trong nội bộ</h2>
+      <ol>
+        <li>Người phụ trách mô tả rõ phần cứng, mục tiêu và giới hạn kỹ thuật.</li>
+        <li>AI tạo bản nháp đầu tiên ở phạm vi nhỏ.</li>
+        <li>Kỹ sư phụ trách rà soát board, chân GPIO, framework và giả định phần cứng.</li>
+        <li>Tiến hành Build, Upload và Monitor trên board thật.</li>
+        <li>Chỉ sau khi module nhỏ hoạt động đúng mới tích hợp vào project lớn hơn.</li>
+      </ol>
+
+      <div class="summary-box">
+        <p><strong>Nguyên tắc áp dụng:</strong> Không tích hợp trực tiếp đoạn mã do AI sinh ra vào firmware chính khi chưa qua bước rà soát thủ công và thử nghiệm thực tế trên phần cứng.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

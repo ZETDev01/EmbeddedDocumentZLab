@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z Lab VN - Sổ tay lập trình nhúng với Visual Studio Code</title>
+  <link rel="stylesheet" href="./assets/embedded-doc.css" />
+</head>
+<body>
+  <div class="watermark">Z LAB VN | NỘI BỘ</div>
+  <main class="document">
+    <section class="cover">
+      <div class="cover-frame">
+        <div class="cover-top">
+          <div class="unit">Z Lab VN</div>
+          <div class="line"></div>
+          <div class="cover-kicker">Sổ tay kỹ thuật nội bộ</div>
+        </div>
+
+        <h1>Sổ tay lập trình nhúng với Visual Studio Code</h1>
+        <h2>Tài liệu thống nhất về định hướng công cụ, lựa chọn phần cứng, quy trình cài đặt và lộ trình triển khai cho ESP32 DevKit và STM32F103C8T6</h2>
+
+        <div class="cover-box">
+          <table>
+            <tr>
+              <td><strong>Đơn vị</strong></td>
+              <td>Z Lab VN</td>
+            </tr>
+            <tr>
+              <td><strong>Phân loại</strong></td>
+              <td>NỘI BỘ</td>
+            </tr>
+            <tr>
+              <td><strong>Phiên bản</strong></td>
+              <td>1.0</td>
+            </tr>
+            <tr>
+              <td><strong>Ngày cập nhật</strong></td>
+              <td>08/04/2026</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cover-footer">
+          Tài liệu sử dụng nội bộ cho Z Lab VN
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Mục lục tài liệu</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="toc-title">Mục lục</div>
+      <table class="toc">
+        <tr>
+          <td>1. Mục đích và phạm vi áp dụng</td>
+          <td>Mở đầu</td>
+        </tr>
+        <tr>
+          <td>2. Định hướng công cụ và phạm vi kỹ thuật</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>3. Chuẩn phần cứng khuyến nghị</td>
+          <td>Phần I</td>
+        </tr>
+        <tr>
+          <td>4. Quy trình cài đặt Visual Studio Code và PlatformIO</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>5. Các mốc hoàn thành tối thiểu</td>
+          <td>Phần II</td>
+        </tr>
+        <tr>
+          <td>6. Định hướng nâng cấp sang bộ công cụ chính hãng</td>
+          <td>Phần III</td>
+        </tr>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Ghi chú:</strong> Tài liệu này dùng làm sổ tay chung cho giai đoạn nhập môn lập trình nhúng tại Z Lab VN. Phần thực hành chi tiết và checklist kiểm tra được tách sang tài liệu phụ lục tương ứng.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Sổ tay lập trình nhúng với Visual Studio Code</div>
+        <div>Phân loại: NỘI BỘ</div>
+      </div>
+
+      <div class="section-band">Phần mở đầu</div>
+
+      <h2>1. Mục đích và phạm vi áp dụng</h2>
+      <p class="lead">Tài liệu này được sử dụng để thống nhất cách tiếp cận ban đầu đối với việc học và triển khai lập trình nhúng bằng Visual Studio Code trong phạm vi nội bộ Z Lab VN.</p>
+      <p>Mục đích của tài liệu là xác định một lộ trình rõ ràng để người mới có thể cài đặt môi trường, lựa chọn đúng phần cứng, nạp được chương trình đầu tiên và hiểu được các bước kiểm tra cần thiết trước khi chuyển sang bài toán phức tạp hơn.</p>
+      <p>Phạm vi áp dụng gồm thực tập sinh, kỹ thuật viên mới, thành viên kỹ thuật chuyển hướng sang nhúng và các cá nhân cần tham gia các dự án liên quan tới ESP32 DevKit hoặc STM32F103C8T6 trong nội bộ đơn vị.</p>
+
+      <h2>2. Định hướng công cụ và phạm vi kỹ thuật</h2>
+      <p>Trong giai đoạn nhập môn, tài liệu này chọn Visual Studio Code làm môi trường phát triển thống nhất và chọn extension PlatformIO IDE làm lớp công cụ chính để rút ngắn thời gian cài đặt cũng như giảm sai khác giữa các dòng vi điều khiển.</p>
+      <p>Các framework được sử dụng ở giai đoạn đầu là Arduino trên ESP32 DevKit và STM32F103C8T6. Việc lựa chọn này nhằm giúp người học nhanh đạt được các mốc nền tảng như biên dịch, nạp chương trình, theo dõi monitor, đọc log, thay đổi chân GPIO và kiểm tra trạng thái phần cứng cơ bản.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/embedded-system-roadmap.svg" alt="Embedded learning roadmap" />
+        <p><strong>Hình 1.</strong> Sơ đồ lộ trình học nhúng dùng để minh họa chuỗi triển khai từ cài môi trường đến giai đoạn áp dụng AI trong firmware.</p>
+      </div>
+
+      <div class="note">
+        Giai đoạn nhập môn không nhằm thay thế các bộ công cụ chính hãng. Mục tiêu của giai đoạn này là tạo mặt bằng thao tác thống nhất và khả năng chạy thử thành công trên phần cứng thật.
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần I - Công cụ và phần cứng</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần I - Công cụ và phần cứng</div>
+
+      <h2>3. Chuẩn phần cứng khuyến nghị</h2>
+      <p>Để giảm tối đa thời gian xử lý lỗi do sai khác phần cứng, tài liệu này quy định bộ phần cứng khuyến nghị theo hai nhánh riêng cho ESP32 DevKit và STM32F103C8T6. Trong các đợt đào tạo ngắn hạn, cần ưu tiên chuẩn hóa board thay vì để mỗi người sử dụng một loại khác nhau.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nhóm</th>
+            <th>Board khuyến nghị</th>
+            <th>Lý do chọn</th>
+            <th>Lưu ý</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ESP32</td>
+            <td>ESP32 DevKit hoặc nhóm board tương đương</td>
+            <td>Phổ biến, dễ mua, có tài liệu cộng đồng lớn, phù hợp cho bài học Wi-Fi và GPIO</td>
+            <td>Cần kiểm tra chip USB-UART là CP210x hoặc CH340 để cài đúng driver</td>
+          </tr>
+          <tr>
+            <td>STM32</td>
+            <td>STM32F103C8T6</td>
+            <td>Phổ biến, chi phí thấp, phù hợp cho bài học GPIO và UART ở mức cơ bản</td>
+            <td>Cần chuẩn bị ST-LINK để nạp chương trình và USB-UART nếu cần theo dõi monitor</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Bộ kit khuyến nghị cho ESP32:</strong> 1 board ESP32 DevKit, 1 cáp Micro USB có data, 1 breadboard nhỏ, LED rời, điện trở 220 ohm, dây jumper.</p>
+        <p><strong>Bộ kit khuyến nghị cho STM32:</strong> 1 board STM32F103C8T6, 1 bộ nạp ST-LINK, 1 module USB-UART nếu cần monitor, 1 breadboard nhỏ, LED rời, điện trở 220 ohm, dây jumper.</p>
+      </div>
+
+      <div class="figure-box">
+        <img src="./assets/figures/board-selection-matrix.svg" alt="Board selection matrix" />
+        <p><strong>Hình 2.</strong> Ma trận lựa chọn board dùng để chuẩn hóa phần cứng trong giai đoạn đào tạo nhập môn.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Cài đặt và triển khai</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Cài đặt và triển khai</div>
+
+      <h2>4. Quy trình cài đặt Visual Studio Code và PlatformIO</h2>
+      <p>Việc cài đặt môi trường được thực hiện theo một trình tự thống nhất để tránh lỗi chéo giữa editor, extension, driver và cổng kết nối phần cứng.</p>
+
+      <div class="figure-box">
+        <img src="./assets/figures/setup-pipeline.svg" alt="Setup pipeline" />
+        <p><strong>Hình 3.</strong> Sơ đồ quy trình cài đặt và chạy thử môi trường phát triển nhúng.</p>
+      </div>
+
+      <h3>4.1. Các bước thực hiện</h3>
+      <ol>
+        <li>Cài Visual Studio Code từ trang chính thức.</li>
+        <li>Cài extension PlatformIO IDE trong Visual Studio Code.</li>
+        <li>Kết nối board bằng cáp USB có hỗ trợ truyền dữ liệu.</li>
+        <li>Kiểm tra hệ điều hành đã nhận đúng thiết bị serial hoặc bộ nạp ST-LINK.</li>
+        <li>Mở đúng thư mục sample project trong thư mục Embedded/samples.</li>
+        <li>Thực hiện Build, sau đó Upload, sau đó Monitor.</li>
+      </ol>
+
+      <h3>4.2. Nguyên tắc thao tác</h3>
+      <ol>
+        <li>Không thực hiện Upload khi Build chưa hoàn tất thành công.</li>
+        <li>Không mở rộng code khi sample tối thiểu chưa chạy ổn định.</li>
+        <li>Không kết luận lỗi do code khi chưa xác nhận cáp, driver, cổng kết nối và cấu hình board.</li>
+      </ol>
+
+      <div class="codebox">[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+monitor_speed = 115200
+
+[env:bluepill_f103c8]
+platform = ststm32
+board = bluepill_f103c8
+framework = arduino
+monitor_speed = 115200</div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần II - Cài đặt và triển khai</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần II - Cài đặt và triển khai</div>
+
+      <h2>5. Các mốc hoàn thành tối thiểu</h2>
+      <p>Người học chỉ được xem là hoàn thành giai đoạn nhập môn khi tự thực hiện được các mốc nền tảng sau mà không phụ thuộc hoàn toàn vào sự hỗ trợ trực tiếp.</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Mốc</th>
+            <th>Nội dung cần đạt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mốc 1</td>
+            <td>Cài xong Visual Studio Code, PlatformIO IDE, mở được sample project</td>
+          </tr>
+          <tr>
+            <td>Mốc 2</td>
+            <td>Build thành công ít nhất một sample ESP32 và một sample STM32</td>
+          </tr>
+          <tr>
+            <td>Mốc 3</td>
+            <td>Upload được firmware lên board và xác nhận kết quả qua LED hoặc log serial</td>
+          </tr>
+          <tr>
+            <td>Mốc 4</td>
+            <td>Mở được Serial Monitor, đọc đúng log và đúng tốc độ truyền</td>
+          </tr>
+          <tr>
+            <td>Mốc 5</td>
+            <td>Tự thay đổi được tham số cơ bản như chu kỳ blink hoặc chân GPIO rồi kiểm tra lại</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary-box">
+        <p><strong>Tiêu chí thực hành:</strong> Người học cần chạy được ESP32 Blink, ESP32 Wi-Fi Scan, STM32 Blink và STM32 UART Counter trước khi chuyển sang nội dung nâng cao.</p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="title">Phần III - Định hướng nâng cấp</div>
+        <div>Z Lab VN</div>
+      </div>
+
+      <div class="section-band">Phần III - Định hướng nâng cấp</div>
+
+      <h2>6. Định hướng nâng cấp sang bộ công cụ chính hãng</h2>
+      <p>Sau khi hoàn thành giai đoạn nhập môn bằng PlatformIO, lộ trình kỹ thuật cần được mở rộng sang các bộ công cụ chính hãng theo từng dòng vi điều khiển để phục vụ yêu cầu dự án nghiêm túc hơn.</p>
+
+      <h3>6.1. Đối với ESP32</h3>
+      <p>Nhánh nâng cấp ưu tiên là ESP-IDF kết hợp extension chính thức của Espressif cho Visual Studio Code. Việc chuyển hướng này phù hợp khi cần quản lý tác vụ, sự kiện hệ thống, bộ nhớ, phân vùng flash hoặc các thành phần Wi-Fi và BLE theo hướng sản phẩm.</p>
+
+      <h3>6.2. Đối với STM32</h3>
+      <p>Nhánh nâng cấp ưu tiên là STM32 VS Code Extension, STM32CubeMX, STM32CubeCLT và các framework HAL hoặc LL. Hướng này cần thiết khi dự án sử dụng timer, ADC, DMA, UART interrupt, clock tree và các ngoại vi ở mức chi tiết hơn.</p>
+
+      <div class="note">
+        Khi chuyển sang công cụ chính hãng, vẫn cần duy trì nguyên tắc đã hình thành ở giai đoạn nhập môn: sample tối thiểu chạy ổn định, log quan sát rõ ràng và kiểm tra phần cứng trước khi mở rộng tính năng.
+      </div>
+
+      <div class="summary-box">
+        <p><strong>Tài liệu đi kèm:</strong> Phần thực hành chi tiết, sample project và checklist xử lý lỗi được trình bày tại file 02-thuc-hanh-sample-va-checklist.html. Hướng dẫn sử dụng AI trong lập trình firmware được trình bày tại file 03-huong-dan-ai-cho-firmware.html.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
